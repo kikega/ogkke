@@ -10,7 +10,7 @@
 
     <meta name="description" content="">
     <meta name="author" content="egalvez">
-    <title>Mis Oposiciones</title>
+    <title>OGKKE</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
@@ -24,24 +24,12 @@
   </head>
 
   <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-
-    {% include 'navbar.html' %}
-    <div class="content-wrapper"> 
-      <div class="container-fluid"> 
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="#">Inicio</a>
-          </li>
-          <li class="breadcrumb-item active">
-            {% block breadcrumb %} 
-            {% endblock breadcrumb %}
-          </li>
-        </ol> 
-      <h1>{% block titulo %}{% endblock titulo %}</h1> 
-      {% block cuerpo %}{% endblock cuerpo %}
-      </div>
-    </div>
+  
+  
+  {% block container %}
     
+  {% endblock container %}
+      
     <!-- Bootstrap core JavaScript -->
     <script src="{% static "jquery/jquery.min.js" %}"></script>
     <script src="{% static "popper/popper.min.js" %}"></script>
@@ -55,9 +43,7 @@
 
     <script src="{% static "js/sb-admin.js" %}"></script>
 
-    {% block scripts %}
-    
-    {% endblock scripts %}
+  
 
   </body>
 

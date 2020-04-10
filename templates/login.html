@@ -1,73 +1,38 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="es">
+{% extends 'base.html' %}
 
-  <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <meta name="description" content="">
-    <meta name="author" content="egalvez">
-    <title>OGKKE</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
-
-    <!-- Fuentes para esta plantilla -->
-    <link href="{% static "font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
-
-    <!-- Estilos para esta plantilla -->
-    <link href="{% static "css/sb-admin.css" %}" rel="stylesheet">
-
-  </head>
-
-  <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-
-    <div class="container">
-    <div class="card card-login mx-auto mt-5">
-        <div class="card-header">
-            <i class="fa fa-fw fa-user-circle" aria-hidden="true"></i>
-          Login
+{% block container %}
+  
+<div class="container">
+  <div class="card card-login mx-auto mt-5">
+    <div class="card-header">
+      <i class="fa fa-fw fa-user-circle" aria-hidden="true"></i>
+        Login
+    </div>
+  
+    <div class="card-body">        
+      {% if error %}
+      <div class="alert alert-danger" role="alert">
+        {{ error }}
+      </div>           
+      {% endif %}
+                
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="usuario">Usuario</label>
+          <input type="text" class="form-control" id="username" name="username">
         </div>
-        <div class="card-body">
-          
-          {% if error %}
-            <p>{{ error }}</p>            
-          {% endif %}
-            
-          <form action="" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-              <label for="usuario">Usuario</label>
-              <input type="text" class="form-control" id="username" name="username">
-            </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-            </div>
-            <div class="form-group">
-                <input class="btn btn-primary btn-block" type="submit" value="Enviar">
-            </div>
-          </form>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
         </div>
-    </div>    
-          
+        <div class="form-group">
+          <input class="btn btn-primary btn-block" type="submit" value="Enviar">
+        </div>
+      </form>
+    </div>
+  </div>         
 </div>
-      
-    
-    <!-- Bootstrap core JavaScript -->
-    <script src="{% static "jquery/jquery.min.js" %}"></script>
-    <script src="{% static "popper/popper.min.js" %}"></script>
-    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="{% static "jquery-easing/jquery.easing.min.js" %}"></script>
-
-    <script src="{% static "js/sb-admin.js" %}"></script>
-
-  </body>
-
-</html>
+{% endblock container %}
 
