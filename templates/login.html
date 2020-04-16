@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block container %}
   
@@ -8,13 +9,20 @@
       <i class="fa fa-fw fa-user-circle" aria-hidden="true"></i>
         Login
     </div>
+     
   
-    <div class="card-body">        
-      {% if error %}
-      <div class="alert alert-danger" role="alert">
-        {{ error }}
-      </div>           
+    <div class="card-body">  
+      <div class="text-center">
+        <img src="{% static 'img/gojuryu.png' %}" class="rounded"> 
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+          {{ error }}
+        </div>           
       {% endif %}
+      </div>
+       
+      
+      
                 
       <form action="" method="post">
         {% csrf_token %}
