@@ -16,51 +16,25 @@
                   Inicio</span>
               </a>
             </li>
-            <li class="nav-item {%  if request.resolver_match.url_name == "temhacienda" %}active{% endif %}
-            {%  if request.resolver_match.url_name == "temavg" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Temas">
-              <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseTema" data-parent="#exampleAccordion">
-                <i class="fa fa-fw fa-file"></i>
-                <span class="nav-link-text">Alumnos</span>
-              </a>
 
-              <ul class="sidenav-second-level collapse" id="collapseTema">
-                <li>
-                  <a href="#">1º DAN</a>
-                </li>
-                <li>
-                  <a href="#">2º DAN</a>
-                </li>
-                <li>
-                  <a href="#">3º DAN</a>
-                </li>
-                <li>
-                  <a href="#">4º DAN</a>
-                </li>
-                <li>
-                  <a href="#">5º DAN</a>
-                </li>
-                <li>
-                  <a href="#">6º DAN</a>
-                </li>
-                <li>
-                  <a href="#">7º DAN</a>
-                </li>
-                <li>
-                  <a href="#">8º DAN</a>
-                </li>
-              </ul>
+            <li class="nav-item {%  if request.resolver_match.url_name == "alumno" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
+              <a class="nav-link" href="{% url 'alumnos' %}">
+                <i class="fa fa-fw fa-address-card"></i>
+                <span class="nav-link-text">
+                  Alumnos</span>
+              </a>
             </li>
             
             <li class="nav-item {%  if request.resolver_match.url_name == "inicio" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
-              <a class="nav-link" href="#">
-                <i class="fa fa-fw fa-dashboard"></i>
+              <a class="nav-link" href="{% url 'dojos' %}">
+                <i class="fa fa-fw fa-university"></i>
                 <span class="nav-link-text">Dojos</span>
               </a>
             </li>
 
             <li class="nav-item {%  if request.resolver_match.url_name == "inicio" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
               <a class="nav-link" href="#">
-                <i class="fa fa-fw fa-dashboard"></i>
+                <i class="fa fa-fw fa-meetup"></i>
                 <span class="nav-link-text">Cursillos</span>
               </a>
             </li>
@@ -93,26 +67,26 @@
               </a>
             </li>
             
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-fw fa-sign-out"></i>
+                Salir</a></li>
+            {% else %}
+              Usuario</a></li>
+            {% endif %}
               
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-fw fa-sign-out"></i>
-                    Salir</a></li>
-                {% else %}
-                Usuario</a></li>
-                {% endif %}
           </ul>
         </div>
     </nav>
 
     <footer class="sticky-footer">
-        <div class="container">
-            <div class="text-center">
-                <small>Copyright &copy; egalvez 2020</small>
-            </div>
-        </div>
+      <div class="container">
+          <div class="text-center">
+              <small>Copyright &copy; egalvez 2020</small>
+          </div>
+      </div>
     </footer>
-      
+    
     <!-- Scroll to Top Button -->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fa fa-angle-up"></i>
@@ -120,21 +94,21 @@
 
       <!-- Logout Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">¿Has terminado?</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  Seleccione Salir si está preparado para terminar la sesión
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                  <a class="btn btn-primary" href="{% url 'logout' %}">Salir</a>
-                </div>
-              </div>
-            </div>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">¿Has terminado?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
+          <div class="modal-body">
+            Seleccione Salir si está preparado para terminar la sesión
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="{% url 'logout' %}">Salir</a>
+          </div>
+        </div>
+      </div>
+    </div>

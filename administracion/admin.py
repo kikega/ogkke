@@ -5,7 +5,7 @@ from .models import *
 class ExamenAdmin(admin.ModelAdmin):
     list_display = ('evento', 'alumno', 'grado')
     raw_id_fields = ('alumno',)
-    list_filter = ('evento',)
+    list_filter = ('evento',)    
 
 
 class AlumnoAdmin(admin.ModelAdmin):

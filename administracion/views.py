@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView, ListView
+from administracion.models import Dojo
 
 # Create your views here.
 
@@ -27,3 +30,15 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+
+@login_required
+def alumnos_view(request):
+    return render(request, 'alumnos.html')
+
+
+class DojosView(LoginRequiredMixin, ListView):
+    """Listado de gimnasios de la asociación"""
+    template_name = 'dojos.html'
+    model = Dojo
+    context_object_name = 'dojo'
