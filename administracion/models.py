@@ -28,6 +28,7 @@ class Alumno(models.Model):
     renshi = models.DateField(auto_now=False, auto_now_add=False, blank = True, null = True)
     kyoshi = models.DateField(auto_now=False, auto_now_add=False, blank = True, null = True)
     dojo = models.ForeignKey(Dojo, on_delete=models.CASCADE)
+    activo = models.BooleanField(blank=True, null=True)
 
     class Meta:
         ordering = ['apellidos', 'nombre']
