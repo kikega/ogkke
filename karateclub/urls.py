@@ -22,7 +22,9 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
-    path('alumnos/', views.alumnos_view, name='alumnos'),
+    path('alumnos/', views.AlumnosView.as_view(), name='alumnos'),
+    path('alumnos/<int:dan>/', views.AlumnosDan, name='alumnosdan'),
     path('dojos/', views.DojosView.as_view(), name='dojos'),
+    path('dojos/<int:dojo>/', views.DojoDetail, name='dojodetail'),
     path('admin/', admin.site.urls),
 ]

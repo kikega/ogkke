@@ -9,7 +9,7 @@ class ExamenAdmin(admin.ModelAdmin):
 
 
 class AlumnoAdmin(admin.ModelAdmin):
-    list_display = ('apellidos', 'nombre', 'dojo', 'grado')
+    list_display = ('apellidos', 'nombre', 'dojo', 'grado', 'activo')
     list_filter = ('dojo',)
     raw_id_fields = ('dojo',)
     search_fields = ('nombre', 'apellidos')

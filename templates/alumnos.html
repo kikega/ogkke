@@ -5,12 +5,78 @@
 {% include 'navbar.html' %}
 <div class="content-wrapper"> 
   <div class="container-fluid"> 
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
-      <li class="breadcrumb-item active"><a href="#">Alumnos</a>
-      </li>
-    </ol> 
-  <h1>Cinturones Negros</h1> 
+    <div class="row">
+      <div class="col">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
+          <li class="breadcrumb-item active"><a href="#">Alumnos</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col">
+        <h1>Cinturones Negros</h1>
+      </div>
+    </div>
+     
+
+    <div class="row">
+      <div class="col">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="1">1º DAN <span class="align-middle badge badge-pill badge-dark">126</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="2">2º DAN <span class="align-middle badge badge-pill badge-dark">88</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="3">3ª DAN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">4º DAN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">5º DAN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">6ª DAN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">7º DAN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">8º DAN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">9ª DAN</a>
+          </li>
+        </ul>
+      </div>
+    </div> 
+  
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped">
+          <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Grado</th>
+            <th>Instructor</th>
+          </tr>
+          {% for alm in alumnos %}
+            <tr>
+              <td><a href="{{ alm.id }}">{{ alm.nombre }}</a></td>
+              <td>{{ alm.apellidos }}</td>
+              <td>{{ alm.grado }}</td>
+              <td>{{ alm.instructor }}</td>
+            </tr>		
+          {% endfor %}
+          </table>
+      </div>
+    </div>
+  
 
   </div>
 </div>
