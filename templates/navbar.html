@@ -17,13 +17,48 @@
               </a>
             </li>
 
-            <li class="nav-item {%  if request.resolver_match.url_name == "alumno" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <!-- <li class="nav-item {%  if request.resolver_match.url_name == "alumno" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
               <a class="nav-link" href="{% url 'alumnos' %}">
                 <i class="fa fa-fw fa-address-card"></i>
                 <span class="nav-link-text">
                   Alumnos</span>
               </a>
+            </li> -->
+
+            <li class="nav-item 
+            " data-toggle="tooltip" data-placement="right" title="Temas">
+              <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseTema" data-parent="#exampleAccordion">
+                <i class="fa fa-fw fa-file"></i>
+                <span class="nav-link-text">Alumnos</span>
+              </a>
+              <ul class="sidenav-second-level collapse" id="collapseTema">
+                <li>
+                  <a href="/alumnos/1">1º DAN</a>
+                </li>
+                <li>
+                  <a href="/alumnos/2">2º DAN</a>
+                </li>
+                <li>
+                  <a href="/alumnos/3">3º DAN</a>
+                </li>
+                <li>
+                  <a href="/alumnos/4">4º DAN</a>
+                </li>
+                <li>
+                  <a href="/alumnos/5">5º DAN</a>
+                </li>
+                <li>
+                  <a href="/alumnos/6">6º DAN</a>
+                </li>
+                <li>
+                  <a href="/alumnos/7">7º DAN</a>
+                </li>
+                <li>
+                  <a href="/alumnos/8">8º DAN</a>
+                </li>
+              </ul>
             </li>
+
             
             <li class="nav-item {%  if request.resolver_match.url_name == "inicio" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
               <a class="nav-link" href="{% url 'dojos' %}">

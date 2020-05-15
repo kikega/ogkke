@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView, ListView
-from administracion.models import Dojo, Alumno
+from administracion.models import Dojo, Alumno, Examen, Cursillo
 
 # Create your views here.
 
@@ -33,8 +33,19 @@ def logout_view(request):
 
 
 @login_required
-def alumnos_view(request):
-    return render(request, 'alumnos.html')
+def alumnos_view(request,grado=1):
+    """Listado de los alumnos organizados por el grado"""
+    alumno = Alumno.objects.filter(grado=grado).order_by('dojo', 'apellidos')
+    cantidad = Alumno.objects.filter(grado=grado).count()
+    context = {'grado':grado, 'alumno':alumno, 'cantidad':cantidad}
+    return render(request, 'alumnos.html', context)
+
+
+@login_required
+def alumnos_detalle_view(request, id):
+    alumno = Alumno.objects.get(id=id)
+    examen = Examen.objects.filter(alumno=id)
+    return render(request, 'alumnodetalle.html', {'alumno':alumno, 'examen':examen})
 
 
 class DojosView(LoginRequiredMixin, ListView):
