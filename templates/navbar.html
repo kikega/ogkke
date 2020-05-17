@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item {%  if request.resolver_match.url_name == "inicio" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/">
                 <i class="fa fa-fw fa-dashboard"></i>
                 <span class="nav-link-text">
                   Inicio</span>
@@ -68,7 +68,7 @@
             </li>
 
             <li class="nav-item {%  if request.resolver_match.url_name == "inicio" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{% url 'cursillos' %}">
                 <i class="fa fa-fw fa-meetup"></i>
                 <span class="nav-link-text">Cursillos</span>
               </a>
@@ -86,7 +86,7 @@
           <ul class="navbar-nav ml-auto">
             {% if user.is_staff %}
             <li class="nav-item">
-                <a class="nav-link" href="../admin">
+                <a class="nav-link" href="/admin/">
                     <i class="fa fa-fw fa-wrench"></i>
                     Administración
                 </a>

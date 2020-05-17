@@ -17,9 +17,15 @@
   
     <div class="col">
       <div class="row">
-        <div class="alert alert-warning" role="alert">
-          <h2>Cintos Negros {{ grado }}º DAN <strong>{{ cantidad }}</strong></h2>
-        </div>
+        <!-- <div class="alert alert-warning" role="alert"> -->
+          <h2>Cintos Negros {{ grado }}º DAN</h2>
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="row">
+        <h3>Total: <strong>{{ cantidad }}</strong></h2>
       </div>
     </div>
     
@@ -29,17 +35,19 @@
         <table class="table table-striped">
           <tr>
             <th>Nombre</th>
-            <th>Apellidos</th>
             <th>Gimnasio</th>
-            <th>Instructor</th>
+            <th>Activo</th>
             <th>Instructor</th>
           </tr>
           {% for alm in alumno %}
             <tr>
-              <td><a href="{{ alm.id }}">{{ alm.nombre }}</a></td>
-              <td>{{ alm.apellidos }}</td>
+              <td><a href="{{ alm.id }}">{{ alm.apellidos }}, {{ alm.nombre }}</a></td>
               <td>{{ alm.dojo }}</td>
-              <td>{{ alm.instructor }}</td>
+              <td>
+                {% if alm.activo %}
+                  <i class="fa fa-fw fa-check-circle"></i>
+                {% endif %}
+                  </td>
               <td>
               {% if alm.instructor %}
                 <i class="fa fa-fw fa-check-circle"></i>

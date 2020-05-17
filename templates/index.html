@@ -5,14 +5,76 @@
 {% include 'navbar.html' %}
 <div class="content-wrapper"> 
   <div class="container-fluid"> 
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="#">Inicio</a>
-      </li>
-      <li class="breadcrumb-item active">
-      </li>
-    </ol> 
-  <h1>Okinawa Goju Ryu Karate-Do Kyokai España</h1> 
+    <div class="row">
+      <div class="col">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Inicio</a>
+          </li>
+          <li class="breadcrumb-item active">
+          </li>
+        </ol> 
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h1>Okinawa Goju Ryu Karate-Do Kyokai España</h1> 
+        <h2>Datos generales</h2>
+        <h3>Total Cinturones Negros: <span class="badge badge-dark">{{ cn }}</span></h3>         
+        <table class="table table-striped">
+          <tr>
+            <th>1º DAN</th>
+            <th>2º DAN</th>
+            <th>3º DAN</th>
+            <th>4º DAN</th>
+            <th>5º DAN</th>
+            <th>6º DAN</th>
+            <th>7º DAN</th>
+            <th>8º DAN</th>
+          </tr>
+            <tr>
+              <td>125</td>
+              <td>76</td>
+              <td>35</td>
+              <td>34</td>
+              <td>125</td>
+              <td>76</td>
+              <td>35</td>
+              <td>34</td>
+            </tr>		
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">1º DAN 25%</div>
+        </div>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">2º DAN 45%</div>
+        </div>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 15%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">3º DAN 15%</div>
+        </div>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 15%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">4º DAN 15%</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h3>Seminarios</h3>
+        <ul class="list-group">
+          <li class="list-group-item">Total Seminarios Nacional: <span class="badge badge-dark">5</span></li>
+          <li class="list-group-item">Total Seminarios Internacionales España: <span class="badge badge-primary">4</span></li>
+          <li class="list-group-item">Total Seminarios Internacionales Extranjero <span class="badge badge-warning">4</span></li>
+        </ul>
+      </div>
+    </div>
 
   </div>
 </div>

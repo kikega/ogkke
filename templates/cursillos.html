@@ -9,7 +9,7 @@
       <div class="col">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
-          <li class="breadcrumb-item active"><a href="#">Dojos</a>
+          <li class="breadcrumb-item active"><a href="#">Cursillos</a>
           </li>
         </ol> 
       </div>
@@ -17,18 +17,20 @@
 
     <div class="row">
       <div class="col">
-        <h1>Gimnasios asociados</h1> 
+        <h1>Cursillos realizados</h1> 
           <table class="table table-striped">
             <tr>
-              <th>Nombre</th>
-              <th>Poblacion</th>
-              <th>Provincia</th>
+              <th>Fecha</th>
+              <th>Evento</th>
+              <th>Ciudad</th>
+              <th>País</th>
             </tr>
-            {% for dojo in object_list %}
+            {% for curso in cursillo %}
               <tr>
-                <td><a href="{{ dojo.id }}">{{ dojo.nombre }}</a></td>
-                <td>{{ dojo.Poblacion }}</td>
-                <td>{{ dojo.provincia }}</td>
+                <td><a href="{{ curso.id }}">{{ curso.fecha }}</a></td>
+                <td>{{ curso.evento }}</td>
+                <td>{{ curso.ciudad }}</td>
+                <td>{{ curso.pais }}</td>
               </tr>		
             {% endfor %}
           </table>
@@ -40,5 +42,3 @@
 </div>
 
 {% endblock container %}
-    
-    

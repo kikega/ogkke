@@ -9,7 +9,8 @@ from administracion.models import Dojo, Alumno, Examen, Cursillo
 
 @login_required
 def index(request):
-    return render(request, 'index.html')
+    cn = Alumno.objects.all().count()
+    return render(request, 'index.html', {'cn':cn})
 
 def login_view(request):
     """Vista para login en aplicación"""
@@ -42,7 +43,7 @@ def alumnos_view(request,grado=1):
 
 
 @login_required
-def alumnos_detalle_view(request, id):
+def alumnos_detalle_view(request, grado, id):
     alumno = Alumno.objects.get(id=id)
     examen = Examen.objects.filter(alumno=id)
     return render(request, 'alumnodetalle.html', {'alumno':alumno, 'examen':examen})
@@ -59,7 +60,8 @@ class DojosView(LoginRequiredMixin, ListView):
 def DojoDetail(request, dojo):
     gym = Dojo.objects.get(id=dojo)
     alumno = Alumno.objects.filter(dojo=dojo).order_by('-grado','apellidos')
-    return render(request, 'dojodetail.html', {'dojo':gym, 'alumno':alumno})
+    cantidad = Alumno.objects.filter(dojo=dojo).count()
+    return render(request, 'dojodetail.html', {'dojo':gym, 'alumno':alumno, 'cantidad':cantidad})
 
 
 class AlumnosView(LoginRequiredMixin, ListView):
@@ -72,3 +74,9 @@ class AlumnosView(LoginRequiredMixin, ListView):
 @login_required
 def AlumnosDan(request):
     pass
+
+
+@login_required
+def cursillos_view(request):
+    cursillo = Cursillo.objects.all()
+    return render(request, 'cursillos.html', {'cursillo':cursillo})

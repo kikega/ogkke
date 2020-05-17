@@ -7,16 +7,15 @@
   <div class="container-fluid"> 
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
-      <li class="breadcrumb-item active"><a href="#">Dojos</a>
+      <li class="breadcrumb-item active"><a href="{% url 'dojos' %}">Dojos</a>
       </li>
     </ol> 
   <h1>Gimnasios asociados</h1> 
   <h2>{{ dojo.nombre }}</h2>
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title"><i class="fa fa-fw fa-address-book-o"></i>{{ dojo.direccion }}</h5>
-      <p class="card-text"></p><strong>Población: </strong>{{ dojo.Poblacion }}</p>
-      <p class="card-text"></p><strong>Provincia: </strong>{{ dojo.provincia }}</p>
+      <h4 class="card-title">{{ dojo.direccion }}</h4>
+      <p class="card-text">{{ dojo.Poblacion }}, {{ dojo.provincia }}</p>
       <p class="card-text"><i class="fa fa-fw fa-envelope-o"></i>{{ dojo.correo }}</p>
       <p class="card-text"><i class="fa fa-fw fa-phone"></i>{{ dojo.telefono }}</p>
     </div>
@@ -33,11 +32,12 @@
         <tr>
           <td><a href=>{{ alm.nombre }}</a></td>
           <td>{{ alm.apellidos }}</td>
-          <td>{{ alm.grado }}</td>
+          <td>{{ alm.grado }}º DAN</td>
           <td>{{ alm.activo }}</td>
         </tr>		
       {% endfor %}
       </table>
+      <p>Total {{ cantidad }} alumnos</p>
 
   </div>
 </div>
