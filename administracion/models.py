@@ -62,6 +62,7 @@ class Examen(models.Model):
 
     class Meta:
         verbose_name_plural = "Examenes"
+        ordering = ['grado']
 
     def __str__(self):
         return '{} - {}'.format(self.alumno, self.grado)

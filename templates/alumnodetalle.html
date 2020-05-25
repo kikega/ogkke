@@ -5,25 +5,41 @@
 {% include 'navbar.html' %}
 <div class="content-wrapper"> 
   <div class="container-fluid"> 
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
-      <li class="breadcrumb-item active"><a href="/alumnos/{{ alumno.grado }}/">Alumnos</a>
-      </li>
-    </ol> 
-  <h1>Alumno</h1> 
-  <h2>{{ alumno.apellidos }}, {{ alumno.nombre }}</h2>
-  <table class="table table-striped">
-    <tr>
-      <th>Cursillo</th>
-      <th>Grado</th>
-    </tr>
-    {% for exm in examen %}
-      <tr>
-        <td>{{ exm.evento }}</td>
-        <td>{{ exm.grado }}</td>
-      </tr>		
-    {% endfor %}
-    </table>
+    <div class="row">
+      <div class="col">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
+          <li class="breadcrumb-item active"><a href="/alumnos/{{ alumno.grado }}/">Alumnos</a>
+          </li>
+        </ol> 
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h1 class="text-primary">Alumno</h1> 
+        <h2>{{ alumno.apellidos }}, {{ alumno.nombre }}. {{ alumno.grado }}º DAN</h2>
+        <h3>{{ alumno.dojo }}</h3>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <h3>Exámenes realizados</h3>
+          <table class="table table-striped">
+            <tr>
+              <th>Cursillo</th>
+              <th>Grado</th>
+            </tr>
+            {% for exm in examen %}
+              <tr>
+                <td>{{ exm.evento }}</td>
+                <td>{{ exm.grado }}º DAN</td>
+              </tr>		
+            {% endfor %}
+          </table>
+      </div>
+    </div>
   
 
   </div>
