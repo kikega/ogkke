@@ -86,3 +86,10 @@ def AlumnosDan(request):
 def cursillos_view(request):
     cursillo = Cursillo.objects.all()
     return render(request, 'cursillos.html', {'cursillo':cursillo})
+
+
+@login_required
+def cursillo_detalle(request, cursillo):
+    curso = Cursillo.objects.get(id=cursillo)
+    examenes = Examen.objects.filter(evento=cursillo)
+    return render(request, 'cursillodetalle.html', {'curso':curso, 'examenes':examenes})

@@ -29,5 +29,6 @@ urlpatterns = [
     path('dojos/', views.DojosView.as_view(), name='dojos'),
     path('dojos/<int:dojo>/', views.DojoDetail, name='dojodetail'),
     path('cursillos/', views.cursillos_view, name='cursillos'),
+    path('cursillos/<int:cursillo>/', views.cursillo_detalle, name='cursillo'),
     path('admin/', admin.site.urls),
 ]

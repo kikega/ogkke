@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block container %}
+    
+{% include 'navbar.html' %}
+<div class="content-wrapper"> 
+  <div class="container-fluid"> 
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
+      <li class="breadcrumb-item active"><a href="{% url 'cursillos' %}">Cursillo</a>
+      </li>
+    </ol> 
+  <h1>Cursillo</h1> 
+  <h2>{{ curso.evento }}</h2>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">{{ curso.pais }}</h4>
+      <p class="card-text">{{ curso.ciudad }}</p>
+      <p class="card-text">{{ curso.fecha }}</p>
+    </div>
+  </div>
+  <hr>
+    <table class="table table-striped">
+      <tr>
+        <th>Nombre</th>
+        <th>Grado</th>
+      </tr>
+      {% for alm in examenes %}
+        <tr>
+          <td>{{ alm.alumno }}</td>
+          <td>{{ alm.grado }}º DAN</td>
+        </tr>		
+      {% endfor %}
+      </table>
+      <!-- <p>Total {{ cantidad }} alumnos</p> -->
+
+  </div>
+</div>
+
+{% endblock container %}

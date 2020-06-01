@@ -33,7 +33,11 @@
           <td><a href=>{{ alm.nombre }}</a></td>
           <td>{{ alm.apellidos }}</td>
           <td>{{ alm.grado }}º DAN</td>
-          <td>{{ alm.activo }}</td>
+          <td>
+            {% if alm.activo %}
+              <i class="fa fa-fw fa-check-circle"></i>
+            {% endif %}
+          </td>
         </tr>		
       {% endfor %}
       </table>
