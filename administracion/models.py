@@ -10,6 +10,10 @@ class Dojo(models.Model):
     provincia = models.CharField(max_length=50)
     telefono = models.CharField(max_length=9, blank=True, null=True)
     correo = models.EmailField(max_length=254, blank=True, null=True)
+    nombre_instructor = models.CharField(max_length=50, blank=True, null=True)
+    apellidos_instructor = models.CharField(max_length=50, blank=True, null=True)
+    grado = models.IntegerField(blank=True, null=True) 
+    foto_instructor = models.ImageField(upload_to='administracion', blank=True, null=True)
 
     class Meta:
         ordering = ['nombre']
@@ -24,7 +28,6 @@ class Alumno(models.Model):
     nombre = models.CharField(max_length=50)
     apellidos = models.CharField(max_length=50)
     grado = models.IntegerField(blank=True, null=True)
-    instructor = models.BooleanField(default=False)
     renshi = models.DateField(auto_now=False, auto_now_add=False, blank = True, null = True)
     kyoshi = models.DateField(auto_now=False, auto_now_add=False, blank = True, null = True)
     dojo = models.ForeignKey(Dojo, on_delete=models.CASCADE)
@@ -35,6 +38,7 @@ class Alumno(models.Model):
     
     def __str__(self):
         return '{}, {}. {}'.format(self.apellidos, self.nombre, self.grado)
+
 
 
 class Cursillo(models.Model):

@@ -10,7 +10,7 @@
       <li class="breadcrumb-item active"><a href="{% url 'dojos' %}">Dojos</a>
       </li>
     </ol> 
-  <h1>Gimnasios asociados</h1> 
+  <h1>Gimnasio</h1> 
   <h2>{{ dojo.nombre }}</h2>
   <div class="card">
     <div class="card-body">
@@ -24,14 +24,12 @@
     <table class="table table-striped">
       <tr>
         <th>Nombre</th>
-        <th>Apellidos</th>
         <th>Grado</th>
         <th>Activo</th>
       </tr>
       {% for alm in alumno %}
         <tr>
-          <td><a href=>{{ alm.nombre }}</a></td>
-          <td>{{ alm.apellidos }}</td>
+          <td>{{ alm.nombre }}, {{ alm.apellidos }}</td>
           <td>{{ alm.grado }}º DAN</td>
           <td>
             {% if alm.activo %}
