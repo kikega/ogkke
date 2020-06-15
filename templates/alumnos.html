@@ -37,7 +37,6 @@
             <th>Nombre</th>
             <th>Gimnasio</th>
             <th>Activo</th>
-            <th>Instructor</th>
           </tr>
           {% for alm in alumno %}
             <tr>
@@ -48,11 +47,6 @@
                   <i class="fa fa-fw fa-check-circle"></i>
                 {% endif %}
                   </td>
-              <td>
-              {% if alm.instructor %}
-                <i class="fa fa-fw fa-check-circle"></i>
-              {% endif %}
-                </td>
             </tr>		
           {% endfor %}
           </table>

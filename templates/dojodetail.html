@@ -10,37 +10,47 @@
       <li class="breadcrumb-item active"><a href="{% url 'dojos' %}">Dojos</a>
       </li>
     </ol> 
-  <h1>Gimnasio</h1> 
-  <h2>{{ dojo.nombre }}</h2>
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title">{{ dojo.direccion }}</h4>
-      <p class="card-text">{{ dojo.Poblacion }}, {{ dojo.provincia }}</p>
-      <p class="card-text"><i class="fa fa-fw fa-envelope-o"></i>{{ dojo.correo }}</p>
-      <p class="card-text"><i class="fa fa-fw fa-phone"></i>{{ dojo.telefono }}</p>
+  <div class="row">
+    <div class="col">
+      <h1>Gimnasio</h1> 
+      <h2>{{ dojo.nombre }}</h2>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{ dojo.direccion }}</h4>
+          <p class="card-text">{{ dojo.Poblacion }}, {{ dojo.provincia }}</p>
+          <p class="card-text"><i class="fa fa-fw fa-envelope-o"></i>{{ dojo.correo }}</p>
+          <p class="card-text"><i class="fa fa-fw fa-phone"></i>{{ dojo.telefono }}</p>
+        </div>
+      </div>
     </div>
   </div>
+  
   <hr>
-    <table class="table table-striped">
-      <tr>
-        <th>Nombre</th>
-        <th>Grado</th>
-        <th>Activo</th>
-      </tr>
-      {% for alm in alumno %}
+  
+  <div class="row">
+    <div class="col">
+      <table class="table table-striped">
         <tr>
-          <td>{{ alm.nombre }}, {{ alm.apellidos }}</td>
-          <td>{{ alm.grado }}º DAN</td>
-          <td>
-            {% if alm.activo %}
-              <i class="fa fa-fw fa-check-circle"></i>
-            {% endif %}
-          </td>
-        </tr>		
-      {% endfor %}
-      </table>
-      <p>Total {{ cantidad }} alumnos</p>
-
+          <th>Nombre</th>
+          <th>Grado</th>
+          <th>Activo</th>
+        </tr>
+        {% for alm in alumno %}
+          <tr>
+            <td>{{ alm.nombre }}, {{ alm.apellidos }}</td>
+            <td>{{ alm.grado }}º DAN</td>
+            <td>
+              {% if alm.activo %}
+                <i class="fa fa-fw fa-check-circle"></i>
+              {% endif %}
+            </td>
+          </tr>		
+        {% endfor %}
+        </table>
+        <p>Total {{ cantidad }} alumnos</p>  
+    </div>
+  </div>
+    
   </div>
 </div>
 
