@@ -26,7 +26,25 @@
   </div>
   
   <hr>
-  
+
+  <div class="row">
+    <div class="col">
+      <h3>Total Cinturones Negros: <span class="badge badge-dark">{{ cn }}</span></h3>         
+      <table class="table table-striped">
+        <tr>             
+          {% for d in danes  %}
+            <th>{{ forloop.counter }}º DAN</th>
+          {% endfor %}               
+        </tr>
+            <tr>             
+              {% for d in danes  %}
+                <th>{{ d }}</th>
+              {% endfor %}               
+            </tr>		
+      </table>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col">
       <table class="table table-striped">
