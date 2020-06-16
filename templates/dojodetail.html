@@ -14,12 +14,54 @@
     <div class="col">
       <h1>Gimnasio</h1> 
       <h2>{{ dojo.nombre }}</h2>
+    </div>
+  </div>
+  <!-- <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="col-md-5">
+          <div class="card-body">
+            <h4 class="card-title">{{ dojo.direccion }}</h4>
+            <p class="card-text">{{ dojo.Poblacion }}, {{ dojo.provincia }}</p>
+            <p class="card-text"><i class="fa fa-fw fa-envelope-o"></i>{{ dojo.correo }}</p>
+            <p class="card-text"><i class="fa fa-fw fa-phone"></i>{{ dojo.telefono }}</p>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="card-body">
+            <h4 class="card-title">Instructor</h4>
+            <div class="media">
+              <img class="img-thumbnail rounded-circle" src="{{ dojo.foto_instructor.url }}" class="mr-3" height="200" width="200" alt="...">
+              <div class="media-body">
+                <h5 class="mt-0">Instructor: {{ dojo.apellidos_instructor }}, {{ dojo.nombre_instructor }}</h5>
+                <p>Grado: {{ dojo.grado }}º DAN</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div> -->
+  
+  
+  <div class="row">
+    <div class="col-sm-5">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">{{ dojo.direccion }}</h4>
           <p class="card-text">{{ dojo.Poblacion }}, {{ dojo.provincia }}</p>
           <p class="card-text"><i class="fa fa-fw fa-envelope-o"></i>{{ dojo.correo }}</p>
           <p class="card-text"><i class="fa fa-fw fa-phone"></i>{{ dojo.telefono }}</p>
+          <strong><h5 class="mt-0">Instructor: {{ dojo.apellidos_instructor }}, {{ dojo.nombre_instructor }}</h5></strong>
+          <p>Grado: {{ dojo.grado }}º DAN</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7">
+      <div class="card">
+        <div class="card-body">
+          <img class="img-thumbnail" src="{{ dojo.foto_instructor.url }}" class="mr-3" height="192" width="192" alt="...">
         </div>
       </div>
     </div>
