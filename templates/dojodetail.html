@@ -53,8 +53,27 @@
           <p class="card-text">{{ dojo.Poblacion }}, {{ dojo.provincia }}</p>
           <p class="card-text"><i class="fa fa-fw fa-envelope-o"></i>{{ dojo.correo }}</p>
           <p class="card-text"><i class="fa fa-fw fa-phone"></i>{{ dojo.telefono }}</p>
-          <strong><h5 class="mt-0">Instructor: {{ dojo.apellidos_instructor }}, {{ dojo.nombre_instructor }}</h5></strong>
-          <p>Grado: {{ dojo.grado }}º DAN</p>
+          <strong><h5 class="mt-0">
+            
+            {% if dojo.rango %}
+              Sensei:
+            {% else %}
+              Instructor:
+            {% endif %}
+             {{ dojo.apellidos_instructor }}, {{ dojo.nombre_instructor }}</h5></strong>
+          <p>
+            Grado: 
+            {% if dojo.rango == 'h' %}
+              Hanshi
+            {% endif %}
+            {% if dojo.rango == 'r' %}
+              Renshi
+            {% endif %}
+            {% if dojo.rango == 'k' %}
+              Kyoshi
+            {% endif %}
+             {{ dojo.grado }}º DAN
+          </p>
         </div>
       </div>
     </div>

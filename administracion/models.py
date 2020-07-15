@@ -13,6 +13,12 @@ class Dojo(models.Model):
     nombre_instructor = models.CharField(max_length=50, blank=True, null=True)
     apellidos_instructor = models.CharField(max_length=50, blank=True, null=True)
     grado = models.IntegerField(blank=True, null=True) 
+    RANGO_GRADO = (
+        ('h', 'Hanshi'),
+        ('r', 'Renshi'),
+        ('k', 'Kyoshi'),
+    )
+    rango = models.CharField(max_length=1, choices=RANGO_GRADO, blank=True, null=True)
     foto_instructor = models.ImageField(upload_to='administracion', blank=True, null=True)
 
     class Meta:
