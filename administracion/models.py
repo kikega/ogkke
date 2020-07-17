@@ -52,6 +52,7 @@ class Cursillo(models.Model):
     
     evento = models.CharField(max_length=50)
     ciudad = models.CharField(max_length=50)
+    internacional = models.BooleanField(default=False, blank=True, null=True)
     pais = models.CharField(max_length=50, default='España')
     fecha = models.DateField(auto_now=False, auto_now_add=False)
     examenes = models.BooleanField()
