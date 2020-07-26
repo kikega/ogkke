@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.views.generic import TemplateView, ListView
 from administracion.models import Dojo, Alumno, Examen, Cursillo
 
@@ -53,6 +54,19 @@ def alumnos_detalle_view(request, grado, id):
     alumno = Alumno.objects.get(id=id)
     examen = Examen.objects.filter(alumno=id)
     return render(request, 'alumnodetalle.html', {'alumno':alumno, 'examen':examen})
+
+
+@login_required
+def buscar_view(request):
+    error = []
+    if request.method == 'POST':
+        if not request.POST.get('apellido', ""):
+            error.append('Debes introducir el apellido de una persona')
+        # apellido = request.POST['apellido']
+        alumno = Alumno.objects.filter(apellidos__icontains=request.POST['apellido'])
+        cantidad = Alumno.objects.filter(apellidos__icontains=request.POST['apellido']).count()
+
+    return render(request, 'busqueda.html', {'alumno':alumno, 'cantidad':cantidad, 'error':error})
 
 
 class DojosView(LoginRequiredMixin, ListView):

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+    
+{% include 'navbar.html' %}
+<div class="content-wrapper"> 
+  <div class="container-fluid"> 
+    <div class="row">
+      <div class="col">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
+          <li class="breadcrumb-item active"><a href="#">Buscar</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  
+    <div class="col">
+      <div class="row">
+        <!-- <div class="alert alert-warning" role="alert"> -->
+          <h2>Resultado de la búsqueda</h2>
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="row">
+        <h3>Total: <strong>{{ cantidad }}</strong></h2>
+      </div>
+    </div>
+    
+
+    <div class="col">
+      <div class="row">
+        <table class="table table-striped">
+          <tr>
+            <th>Nombre</th>
+            <th>Gimnasio</th>
+            <th>Grado</th>
+          </tr>
+          {% for alm in alumno %}
+            <tr>
+              {%  url 'alumnosdetalle' grado=alm.grado id=alm.id as alumno_url %}
+              <td><a href="{{ alumno_url }}">{{ alm.apellidos }}, {{ alm.nombre }}</a></td>
+              <td>{{ alm.dojo }}</td>
+              <td>{{ alm.grado }}</td>
+            </tr>		
+          {% endfor %}
+          </table>
+      </div>
+    </div>
+  
+
+  </div>
+</div>
+
+{% endblock container %}

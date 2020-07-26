@@ -20,6 +20,14 @@
         <h1 class="text-primary">Grado: {{ alumno.grado }}º DAN</h1> 
         <h2>{{ alumno.apellidos }}, {{ alumno.nombre }}</h2>
         <h3>{{ alumno.dojo }}</h3>
+        
+        {% if alumno.kyoshi %}
+          <p>Kyoshi: {{ alumno.kyoshi }}</p>
+        {% endif %}
+        {% if alumno.renshi %}
+          <p>Renshi: {{ alumno.renshi }}</p>
+        {% endif %}
+          
       </div>
     </div>
     <hr>
