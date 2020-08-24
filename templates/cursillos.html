@@ -24,6 +24,7 @@
               <th>Evento</th>
               <th>Ciudad</th>
               <th>País</th>
+              <th>Internacional</th>
             </tr>
             {% for curso in cursillo %}
               <tr>
@@ -31,6 +32,13 @@
                 <td>{{ curso.evento }}</td>
                 <td>{{ curso.ciudad }}</td>
                 <td>{{ curso.pais }}</td>
+                
+                {% if curso.internacional %}
+                  <td><i class="fa fa-fw fa-check-circle"></i></td>     
+                {% else %}
+                  <td></td>             
+                {% endif %}
+                  
               </tr>		
             {% endfor %}
           </table>

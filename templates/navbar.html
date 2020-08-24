@@ -71,7 +71,7 @@
             <li class="nav-item {%  if request.resolver_match.url_name == "inicio" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
               <a class="nav-link" href="{% url 'dojos' %}">
                 <i class="fa fa-fw fa-university"></i>
-                <span class="nav-link-text">Dojos</span>
+                <span class="nav-link-text">Gimnasios</span>
               </a>
             </li>
 
@@ -81,7 +81,7 @@
                 <span class="nav-link-text">Cursillos</span>
               </a>
             </li>
-            
+          
             
 
           </ul>
@@ -94,12 +94,6 @@
           </ul>
           <!-- Barra superior usuario y busqueda -->
           <ul class="navbar-nav ml-auto">
-
-            <!-- <li class="nav-item">
-              <a class="nav-link" data-toggle="modal" data-target="#buscarModal">
-                <i class="fa fa-fw fa-search"></i>
-                Buscar</a>
-            </li> -->
 
             {% if user.is_staff %}
             <li class="nav-item">

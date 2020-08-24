@@ -15,13 +15,18 @@ class AlumnoAdmin(admin.ModelAdmin):
     search_fields = ('nombre', 'apellidos')
 
 class CursilloAdmin(admin.ModelAdmin):
-    list_display = ('fecha', 'evento', 'ciudad')
+    list_display = ('fecha', 'evento', 'ciudad', 'internacional')
     list_filter = ('ciudad',)
     date_hierarchy = 'fecha'
     filter_horizontal = ('alumnos',)
+
+class PeticionAdmin(admin.ModelAdmin):
+    list_display = ('fecha', 'dojo', 'titulo', 'finalizada')
+    list_filter = ('dojo',)
 
 # Register your models here.
 admin.site.register(Dojo)
 admin.site.register(Alumno, AlumnoAdmin)
 admin.site.register(Cursillo, CursilloAdmin)
 admin.site.register(Examen, ExamenAdmin)
+admin.site.register(Peticion, PeticionAdmin)

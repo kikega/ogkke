@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.views.generic import TemplateView, ListView
-from administracion.models import Dojo, Alumno, Examen, Cursillo
+from administracion.models import Dojo, Alumno, Examen, Cursillo, Peticion
 
 # Create your views here.
 
@@ -12,11 +12,12 @@ from administracion.models import Dojo, Alumno, Examen, Cursillo
 def index(request):
     """Página principal de la aplicación, nos mostrará un resúmen con datos globales"""
     cn = Alumno.objects.all().count()
+    cursos = Cursillo.objects.all().count()
     danes = list()
     for i in range(1, 9):
         i = Alumno.objects.filter(grado=i).count()
         danes.append(i)
-    return render(request, 'index.html', {'cn':cn, 'danes':danes})
+    return render(request, 'index.html', {'cn':cn, 'danes':danes, 'cursos':cursos})
 
 def login_view(request):
     """Vista para login en aplicación"""
@@ -67,6 +68,16 @@ def buscar_view(request):
         cantidad = Alumno.objects.filter(apellidos__icontains=request.POST['apellido']).count()
 
     return render(request, 'busqueda.html', {'alumno':alumno, 'cantidad':cantidad, 'error':error})
+
+
+@login_required
+def peticion_view(request):
+    if request.method == 'POST':
+        pass
+
+    peticion = Peticion.objects.all()
+
+    return render(request, 'peticion.html', {'peticion':peticion})
 
 
 class DojosView(LoginRequiredMixin, ListView):

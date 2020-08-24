@@ -9,7 +9,7 @@
       <div class="col">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
-          <li class="breadcrumb-item active"><a href="#">Buscar</a>
+          <li class="breadcrumb-item active"><a href="#">Peticiones</a>
           </li>
         </ol>
       </div>
@@ -18,21 +18,17 @@
     <div class="col">
       <div class="row">
         <!-- <div class="alert alert-warning" role="alert"> -->
-          <h2>Resultado de la búsqueda</h2>
+          <h2>Listado de peticiones</h2>
         <!-- </div> -->
       </div>
     </div>
     
-    {% if apellido %}
+    {% if peticion.finalizada %}
      
+  
     <div class="col">
       <div class="row">
-        <h3>Total: <strong>{{ cantidad }}</strong></h2>
-      </div>
-    </div>
-    
-    <div class="col">
-      <div class="row">
+        <h3>Peticiones finalizadas</h3>
         <table class="table table-striped">
           <tr>
             <th>Nombre</th>

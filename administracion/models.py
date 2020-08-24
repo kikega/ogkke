@@ -1,6 +1,10 @@
 from django.db import models
 
 # Create your models here.
+
+
+
+
 class Dojo(models.Model):
     """Registra el listado de Dojos"""
 
@@ -77,3 +81,28 @@ class Examen(models.Model):
 
     def __str__(self):
         return '{} - {}'.format(self.alumno, self.grado)
+
+
+
+class Peticion(models.Model):
+
+    fecha = models.DateField(auto_now=False, auto_now_add=True)
+    dojo = models.ForeignKey(Dojo, on_delete=models.CASCADE)
+    TIPO_PETICION = (
+        ('a', 'Añadir'),
+        ('m', 'Modificar'),
+        ('e', 'Eliminar'),
+    )
+    titulo = models.CharField(max_length=550)
+    tipo = models.CharField(max_length=1, choices=TIPO_PETICION, blank=True, null=True)
+    descripcion = models.TextField()
+    finalizada = models.BooleanField(default=False)
+    
+
+    class Meta:
+        verbose_name = ("Peticion")
+        verbose_name_plural = ("Peticiones")
+        ordering = ['dojo', 'fecha']
+
+    def __str__(self):
+        return '{}: {} - {}'.format(self.fecha, self.titulo, self.finalizada)

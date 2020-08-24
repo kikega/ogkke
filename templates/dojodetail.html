@@ -7,43 +7,27 @@
   <div class="container-fluid"> 
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
-      <li class="breadcrumb-item active"><a href="{% url 'dojos' %}">Dojos</a>
+      <li class="breadcrumb-item active"><a href="{% url 'dojos' %}">Gimnasio</a>
       </li>
     </ol> 
   <div class="row">
     <div class="col">
-      <h1 class="text-primary">Gimnasio</h1> 
-      <h2>{{ dojo.nombre }}</h2>
+      <h1 class="text-primary">Gimnasio</h1>
     </div>
   </div>
-  <!-- <div class="row">
-    <div class="col">
-      <div class="card">
-        <div class="col-md-5">
-          <div class="card-body">
-            <h4 class="card-title">{{ dojo.direccion }}</h4>
-            <p class="card-text">{{ dojo.Poblacion }}, {{ dojo.provincia }}</p>
-            <p class="card-text"><i class="fa fa-fw fa-envelope-o"></i>{{ dojo.correo }}</p>
-            <p class="card-text"><i class="fa fa-fw fa-phone"></i>{{ dojo.telefono }}</p>
-          </div>
-        </div>
-        <div class="col-md-7">
-          <div class="card-body">
-            <h4 class="card-title">Instructor</h4>
-            <div class="media">
-              <img class="img-thumbnail rounded-circle" src="{{ dojo.foto_instructor.url }}" class="mr-3" height="200" width="200" alt="...">
-              <div class="media-body">
-                <h5 class="mt-0">Instructor: {{ dojo.apellidos_instructor }}, {{ dojo.nombre_instructor }}</h5>
-                <p>Grado: {{ dojo.grado }}º DAN</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+  <div class="row">
+    <div class="col-auto mr-auto"> 
+      <h2>{{ dojo.nombre }}</h2>
     </div>
-  </div> -->
-  
+    <div class="col-auto">
+      <button class="btn btn-primary" data-toggle="modal" data-target="#peticionModal">
+        Petición Nueva
+      </button>
+      <button type="button" class="btn btn-success">
+        Peticiones pendientes <span class="badge badge-light">4</span>
+      </button>
+    </div>
+  </div>
   
   <div class="row">
     <div class="col-sm-5">
@@ -130,6 +114,44 @@
     </div>
   </div>
     
+  </div>
+</div>
+
+<!-- Peticion Modal -->
+<div class="modal fade" id="peticionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Nueva petición</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Datos de la petición</h4>
+        <form action="{% url 'peticion' %}" method="post" role="form">
+          {% csrf_token %}
+          <div class="form-group">
+            <label>Gimnasio</label>
+            <input type="text" class="form-control" value="{{ dojo }}" name=" {{ dojo.id }}">
+          </div>
+          <div class="form-group">
+            <label>Titulo</label>
+            <input type="text" class="form-control" placeholder="Titulo..." 
+            name="titulo">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Descripción</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="descripcion"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+        </form>
+      </div>
+      
+    </div>
   </div>
 </div>
 

@@ -33,5 +33,6 @@ urlpatterns = [
     path('dojos/<int:dojo>/', views.DojoDetail, name='dojodetail'),
     path('cursillos/', views.cursillos_view, name='cursillos'),
     path('cursillos/<int:cursillo>/', views.cursillo_detalle, name='cursillo'),
+    path('peticion/', views.peticion_view, name='peticion'),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
