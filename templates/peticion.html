@@ -23,24 +23,25 @@
       </div>
     </div>
     
-    {% if peticion.finalizada %}
-     
-  
+    
+    {% if peticion %}
+      
     <div class="col">
       <div class="row">
-        <h3>Peticiones finalizadas</h3>
+        <h3>Peticiones pendientes: <span class="badge badge-primary">{{ cantidad }}</span></h3>
         <table class="table table-striped">
           <tr>
-            <th>Nombre</th>
+            <th>Id</th>
+            <th>Fecha</th>
             <th>Gimnasio</th>
-            <th>Grado</th>
+            <th>Titulo</th>
           </tr>
-          {% for alm in alumno %}
+          {% for p in peticion %}
             <tr>
-              {%  url 'alumnosdetalle' grado=alm.grado id=alm.id as alumno_url %}
-              <td><a href="{{ alumno_url }}">{{ alm.apellidos }}, {{ alm.nombre }}</a></td>
-              <td>{{ alm.dojo }}</td>
-              <td>{{ alm.grado }}</td>
+              <td> <a href="p.id">{{ p.id }}</a></td>
+              <td>{{ p.fecha }}</td>
+              <td>{{ p.dojo }}</td>
+              <td>{{ p.titulo }}</td>
             </tr>		
           {% endfor %}
           </table>
@@ -48,12 +49,13 @@
     </div>
 
     {% else %}
+
     <div class="col">
       <div class="row">
-        <p class="text-danger">Ninguna persona coincide con el criterio de búsqueda</p>
+        <p class="text-danger">No hay peticiones pendientes</p>
       </div>
     </div>
-  
+
     {% endif %}
 
   </div>

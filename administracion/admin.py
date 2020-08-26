@@ -22,7 +22,7 @@ class CursilloAdmin(admin.ModelAdmin):
 
 class PeticionAdmin(admin.ModelAdmin):
     list_display = ('fecha', 'dojo', 'titulo', 'finalizada')
-    list_filter = ('dojo',)
+    list_filter = ('dojo','finalizada')
 
 # Register your models here.
 admin.site.register(Dojo)

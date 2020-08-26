@@ -21,7 +21,7 @@
       <div class="col">
         <h1 class="text-primary">Okinawa Goju Ryu Karate-Do Kyokai España</h1> 
         <h2>Datos generales</h2>
-        <h3>Total Cinturones Negros: <span class="badge badge-dark">{{ cn }}</span></h3>         
+        <h3>Total Cinturones Negros: <span class="badge badge-primary">{{ cn }}</span></h3>         
         <table class="table table-striped">
           <tr>             
             {% for d in danes  %}
@@ -39,10 +39,10 @@
 
     <div class="row">
       <div class="col">
-        <h3>Seminarios: <span class="badge badge-dark">{{ cursos }}</span></h3>
+        <h3>Seminarios: <span class="badge badge-primary">{{ cursos }}</span></h3>
         <ul class="list-group">
-          <li class="list-group-item">Total Seminarios Nacional: <span class="badge badge-dark">5</span></li>
-          <li class="list-group-item">Total Seminarios Internacionales España: <span class="badge badge-primary">4</span></li>
+          <li class="list-group-item">Total Seminarios Nacional: <span class="badge badge-success">{{ nacional }}</span></li>
+          <li class="list-group-item">Total Seminarios Internacionales España: <span class="badge badge-primary">{{ int }}</span></li>
           <li class="list-group-item">Total Seminarios Internacionales Extranjero <span class="badge badge-warning">4</span></li>
         </ul>
       </div>

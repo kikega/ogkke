@@ -22,8 +22,8 @@
         <!-- </div> -->
       </div>
     </div>
-    
-    {% if apellido %}
+
+    {% if alumno %}
      
     <div class="col">
       <div class="row">
@@ -41,7 +41,7 @@
           </tr>
           {% for alm in alumno %}
             <tr>
-              {%  url 'alumnosdetalle' grado=alm.grado id=alm.id as alumno_url %}
+              {% url 'alumnosdetalle' grado=alm.grado id=alm.id as alumno_url %}
               <td><a href="{{ alumno_url }}">{{ alm.apellidos }}, {{ alm.nombre }}</a></td>
               <td>{{ alm.dojo }}</td>
               <td>{{ alm.grado }}</td>

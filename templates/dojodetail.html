@@ -132,8 +132,15 @@
         <form action="{% url 'peticion' %}" method="post" role="form">
           {% csrf_token %}
           <div class="form-group">
-            <label>Gimnasio</label>
-            <input type="text" class="form-control" value="{{ dojo }}" name=" {{ dojo.id }}">
+            <label>Gimnasio {{ dojo }}</label>
+            <input type="hidden" value="{{ dojo.id }}" name="dojo">
+          </div>
+          <div class="form-group">
+            <select name="tipo">
+              <option value="a">Añadir</option>
+              <option value="m">Modificar</option>
+              <option value="e">Eliminar</option>
+            </select>
           </div>
           <div class="form-group">
             <label>Titulo</label>

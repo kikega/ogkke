@@ -81,6 +81,13 @@
                 <span class="nav-link-text">Cursillos</span>
               </a>
             </li>
+
+            <li class="nav-item {%  if request.resolver_match.url_name == "inicio" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
+              <a class="nav-link" href="{% url 'peticion' %}">
+                <i class="fa fa-fw fa-meetup"></i>
+                <span class="nav-link-text">Peticiones</span>
+              </a>
+            </li>
           
             
 

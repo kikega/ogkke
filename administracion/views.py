@@ -13,11 +13,14 @@ def index(request):
     """Página principal de la aplicación, nos mostrará un resúmen con datos globales"""
     cn = Alumno.objects.all().count()
     cursos = Cursillo.objects.all().count()
+    nacional = Cursillo.objects.filter(pais='España').count()
+    int = Cursillo.objects.filter(internacional=True).count()
     danes = list()
     for i in range(1, 9):
         i = Alumno.objects.filter(grado=i).count()
         danes.append(i)
-    return render(request, 'index.html', {'cn':cn, 'danes':danes, 'cursos':cursos})
+    return render(request, 'index.html', {'cn':cn, 'danes':danes, 'cursos':cursos, 'nacional':nacional, 'int':int})
+
 
 def login_view(request):
     """Vista para login en aplicación"""
@@ -33,6 +36,7 @@ def login_view(request):
             return render(request, 'login.html', {'error':'Usuario y/o password incorrecto'})
 
     return render(request, 'login.html')
+
 
 @login_required
 def logout_view(request):
@@ -63,7 +67,7 @@ def buscar_view(request):
     if request.method == 'POST':
         if not request.POST.get('apellido', ""):
             error.append('Debes introducir el apellido de una persona')
-        # apellido = request.POST['apellido']
+        apellido = request.POST['apellido']
         alumno = Alumno.objects.filter(apellidos__icontains=request.POST['apellido'])
         cantidad = Alumno.objects.filter(apellidos__icontains=request.POST['apellido']).count()
 
@@ -73,11 +77,20 @@ def buscar_view(request):
 @login_required
 def peticion_view(request):
     if request.method == 'POST':
-        pass
+        p = Peticion()
+        p.titulo = request.POST['titulo']
+        p.tipo = request.POST['tipo']
+        p.descripcion = request.POST['descripcion']
+        dojo = request.POST['dojo']
+        d = Dojo.objects.get(pk=dojo)
+        p.dojo = Dojo()
+        p.dojo = d
+        p.save()
 
-    peticion = Peticion.objects.all()
+    peticion = Peticion.objects.filter(finalizada=False)
+    cantidad = Peticion.objects.filter(finalizada=False).count()
 
-    return render(request, 'peticion.html', {'peticion':peticion})
+    return render(request, 'peticion.html', {'peticion':peticion, 'cantidad':cantidad})
 
 
 class DojosView(LoginRequiredMixin, ListView):
