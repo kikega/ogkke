@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -68,8 +69,13 @@ def alumnos_view(request,grado=1):
 
 @login_required
 def alumnos_detalle_view(request, grado, id):
+    """Función que lista los detalles de un alumno y los eventos en los cuales se ha examinado"""
     alumno = Alumno.objects.get(id=id)
     examen = Examen.objects.filter(alumno=id)
+    hoy = datetime.date.today()
+    for year in examen:
+        print("Año {} - Grado {}".format(year.evento.fecha.year, year.grado))
+        print(hoy.year)
     return render(request, 'alumnodetalle.html', {'alumno':alumno, 'examen':examen})
 
 

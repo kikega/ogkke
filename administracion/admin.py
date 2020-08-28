@@ -15,8 +15,8 @@ class AlumnoAdmin(admin.ModelAdmin):
     search_fields = ('nombre', 'apellidos')
 
 class CursilloAdmin(admin.ModelAdmin):
-    list_display = ('fecha', 'evento', 'ciudad', 'internacional')
-    list_filter = ('ciudad',)
+    list_display = ('fecha', 'evento', 'ciudad', 'pais', 'internacional')
+    list_filter = ('ciudad', 'pais', 'internacional')
     date_hierarchy = 'fecha'
     filter_horizontal = ('alumnos',)
 
