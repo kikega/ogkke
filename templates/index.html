@@ -19,9 +19,76 @@
 
     <div class="row">
       <div class="col">
-        <h1 class="text-primary">Okinawa Goju Ryu Karate-Do Kyokai España</h1> 
+        <h1 class="text-primary">Okinawa Goju Ryu Karate-Do Kyokai España</h1>
         <h2>Datos generales</h2>
-        <h3>Total Cinturones Negros: <span class="badge badge-primary">{{ cn }}</span></h3>         
+      </div>
+    </div>
+
+    <!-- Cajas con los datos totales -->
+    <div class="row">
+      <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-primary o-hidden">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fa fa-fw fa-male"></i>
+            </div>
+            <div class="mr-5">
+                Cinturones Negros {{ cn }}
+            </div>
+          </div>
+          
+        </div>
+      </div>
+  
+      <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-success o-hidden">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-thumbs-up"></i>
+              </div>
+              <div class="mr-5">
+                Seminarios {{ cursos }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-warning o-hidden">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-cogs"></i>
+              </div>
+              <div class="mr-5">
+                Gimnasios asociados {{ dojos }}
+              </div>
+            </div>
+          </div>
+        </div>
+      
+  
+          <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-danger o-hidden">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="fa fa-fw fa-wrench"></i>
+                </div>
+                <div class="mr-5">
+                  Peticiones Pendientes {{ peticiones }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+    <!-- Fin cajas con los datos totales -->
+
+    <div class="row">
+      <div class="col">
+        <!-- <h1 class="text-primary">Okinawa Goju Ryu Karate-Do Kyokai España</h1>  -->
+        <!-- <h2>Datos generales</h2> -->
+        <!-- <span class="badge badge-primary">{{ cn }}</span> -->
+        <h3>Cinturones Negros por grado</h3>         
         <table class="table table-striped">
           <tr>             
             {% for d in danes  %}
@@ -39,11 +106,12 @@
 
     <div class="row">
       <div class="col">
-        <h3>Seminarios: <span class="badge badge-primary">{{ cursos }}</span></h3>
+        <!-- <span class="badge badge-primary">{{ cursos }}</span> -->
+        <h3>Seminarios</h3>
         <ul class="list-group">
           <li class="list-group-item">Total Seminarios Nacional: <span class="badge badge-success">{{ nacional }}</span></li>
-          <li class="list-group-item">Total Seminarios Internacionales España: <span class="badge badge-primary">{{ int }}</span></li>
-          <li class="list-group-item">Total Seminarios Internacionales Extranjero <span class="badge badge-warning">4</span></li>
+          <li class="list-group-item">Total Seminarios Extranjero <span class="badge badge-warning">{{ extranjero }}</span></li>
+          <li class="list-group-item">Total Seminarios Internacionales: <span class="badge badge-primary">{{ int }}</span></li>
         </ul>
       </div>
     </div>

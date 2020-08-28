@@ -29,19 +29,19 @@
     <div class="col">
       <div class="row">
         <h3>Peticiones pendientes: <span class="badge badge-primary">{{ cantidad }}</span></h3>
-        <table class="table table-striped">
+        <table class="table table-striped table-responsive">
           <tr>
-            <th>Id</th>
             <th>Fecha</th>
             <th>Gimnasio</th>
             <th>Titulo</th>
+            <th>Descripción</th>
           </tr>
           {% for p in peticion %}
             <tr>
-              <td> <a href="p.id">{{ p.id }}</a></td>
               <td>{{ p.fecha }}</td>
               <td>{{ p.dojo }}</td>
               <td>{{ p.titulo }}</td>
+              <td>{{ p.descripcion }}</td>
             </tr>		
           {% endfor %}
           </table>

@@ -15,11 +15,23 @@ def index(request):
     cursos = Cursillo.objects.all().count()
     nacional = Cursillo.objects.filter(pais='España').count()
     int = Cursillo.objects.filter(internacional=True).count()
+    extranjero = Cursillo.objects.exclude(pais='España').count()
+    peticiones = Peticion.objects.filter(finalizada=False).count()
+    dojos = Dojo.objects.all().count()
     danes = list()
     for i in range(1, 9):
         i = Alumno.objects.filter(grado=i).count()
         danes.append(i)
-    return render(request, 'index.html', {'cn':cn, 'danes':danes, 'cursos':cursos, 'nacional':nacional, 'int':int})
+    return render(request, 'index.html', {
+        'cn':cn, 
+        'danes':danes, 
+        'cursos':cursos, 
+        'nacional':nacional, 
+        'int':int,
+        'extranjero':extranjero,
+        'peticiones':peticiones,
+        'dojos':dojos,
+        })
 
 
 def login_view(request):
@@ -63,6 +75,7 @@ def alumnos_detalle_view(request, grado, id):
 
 @login_required
 def buscar_view(request):
+    """Buscamos un cinto negro por su apellido"""
     error = []
     if request.method == 'POST':
         if not request.POST.get('apellido', ""):
