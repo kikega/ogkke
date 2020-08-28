@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block container %}
     
 {% include 'navbar.html' %}
@@ -27,7 +29,7 @@
     <!-- Cajas con los datos totales -->
     <div class="row">
       <div class="col-xl-3 col-sm-6 mb-3">
-        <div class="card text-white bg-primary o-hidden">
+        <!-- <div class="card text-white bg-primary o-hidden">
           <div class="card-body">
             <div class="card-body-icon">
               <i class="fa fa-fw fa-male"></i>
@@ -37,11 +39,17 @@
             </div>
           </div>
           
+        </div> -->
+        <div class="card mb-3">
+          <img src="{% static 'img/slide1.png' %}" class="card-img-top" alt="cinturon negro">
+          <div class="card-body">
+            <h3 class="card-title">Cintos negros {{ cn }}</h3>
+          </div>
         </div>
       </div>
   
       <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-success o-hidden">
+          <!-- <div class="card text-white bg-success o-hidden">
             <div class="card-body">
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-thumbs-up"></i>
@@ -50,11 +58,17 @@
                 Gasshukus {{ cursos }}
               </div>
             </div>
+          </div> -->
+          <div class="card mb-3">
+            <img src="{% static 'img/slide2.png' %}" class="card-img-top" alt="cinturon negro">
+            <div class="card-body">
+              <h3 class="card-title">Gasshukus {{ cursos }}</h3>
+            </div>
           </div>
         </div>
 
         <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-warning o-hidden">
+          <!-- <div class="card text-white bg-warning o-hidden">
             <div class="card-body">
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-cogs"></i>
@@ -63,11 +77,17 @@
                 Dojos asociados {{ dojos }}
               </div>
             </div>
+          </div> -->
+          <div class="card mb-3">
+            <img src="{% static 'img/slide2.png' %}" class="card-img-top" alt="cinturon negro">
+            <div class="card-body">
+              <h3 class="card-title">Dojos {{ dojos }}</h3>
+            </div>
           </div>
         </div>
       
           <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-danger o-hidden">
+            <!-- <div class="card text-white bg-danger o-hidden">
               <div class="card-body">
                 <div class="card-body-icon">
                   <i class="fa fa-fw fa-wrench"></i>
@@ -75,6 +95,12 @@
                 <div class="mr-5">
                   Peticiones Pendientes {{ peticiones }}
                 </div>
+              </div>
+            </div> -->
+            <div class="card mb-3">
+              <img src="{% static 'img/slide2.png' %}" class="card-img-top" alt="cinturon negro">
+              <div class="card-body">
+                <h3 class="card-title">Peticiones {{ peticiones }}</h3>
               </div>
             </div>
           </div>
