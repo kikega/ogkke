@@ -5,6 +5,9 @@
 {% include 'navbar.html' %}
 <div class="content-wrapper"> 
   <div class="container-fluid"> 
+
+    {% include 'cabecera.html' %}
+
     <div class="row">
       <div class="col">
         <ol class="breadcrumb">
@@ -44,7 +47,7 @@
               <td>{{ alm.dojo }}</td>
               <td>
                 {% if alm.activo %}
-                  <i class="fa fa-fw fa-check-circle"></i>
+                  <i class="fa fa-fw fa-check-circle text-success"></i>
                 {% endif %}
                   </td>
             </tr>		
