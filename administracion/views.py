@@ -125,10 +125,17 @@ def DojoDetail(request, dojo):
     gym = Dojo.objects.get(id=dojo)
     alumno = Alumno.objects.filter(dojo=dojo).order_by('-grado','apellidos')
     cantidad = Alumno.objects.filter(dojo=dojo).count()
+    peticion = Peticion.objects.filter(finalizada=False, dojo=dojo).count()
     for i in range(1, 9):
         i = Alumno.objects.filter(dojo=dojo,grado=i).count()
         danes.append(i)
-    return render(request, 'dojodetail.html', {'dojo':gym, 'alumno':alumno, 'cantidad':cantidad, 'danes':danes})
+    return render(request, 'dojodetail.html', {
+        'dojo':gym, 
+        'alumno':alumno, 
+        'cantidad':cantidad, 
+        'danes':danes, 
+        'peticion':peticion
+        })
 
 
 class AlumnosView(LoginRequiredMixin, ListView):
