@@ -3,6 +3,9 @@
 {% block container %}
     
 {% include 'navbar.html' %}
+
+{% include 'cabecera.html' %}
+
 <div class="content-wrapper"> 
   <div class="container-fluid"> 
     <ol class="breadcrumb">
@@ -104,7 +107,7 @@
             <td>{{ alm.grado }}º DAN</td>
             <td>
               {% if alm.activo %}
-                <i class="fa fa-fw fa-check-circle"></i>
+                <i class="fa fa-fw fa-check-circle text-success"></i>
               {% endif %}
             </td>
           </tr>		
