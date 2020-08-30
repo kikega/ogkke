@@ -21,6 +21,9 @@
     <!-- Estilos para esta plantilla -->
     <link href="{% static "css/sb-admin.css" %}" rel="stylesheet">
 
+    <!-- Estilos para DataTable -->
+    <link href="{% static "datatables/dataTables.bootstrap4.css" %}" rel="stylesheet">
+
   </head>
 
   <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -43,7 +46,11 @@
 
     <script src="{% static "js/sb-admin.js" %}"></script>
 
-  
+
+    {% block script_js %}
+
+    {% endblock script_js %}
+
 
   </body>
 

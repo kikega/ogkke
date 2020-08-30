@@ -33,7 +33,7 @@
 
     <div class="col">
       <div class="row">
-        <table id="dataTable" class="table table-striped">
+        <table id="tabla_alumnos" class="table table-striped">
           <tr>
             <th>Nombre</th>
             <th>Gimnasio</th>
@@ -57,12 +57,17 @@
   </div>
 </div>
 
-<script>
-  $(document).ready(function() {
-    $('#dataTable').DataTable();
-} );
-</script>
 
 {% endblock container %}
     
+{% block script_js %}
+
+<script>
+  $(document).ready( function () {
+    $('#tabla_alumnos').DataTable();
+    console.log("Script datatable");
+  });
+</script>
+
+{% endblock script_js %}
     
