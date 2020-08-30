@@ -126,6 +126,7 @@ def DojoDetail(request, dojo):
     alumno = Alumno.objects.filter(dojo=dojo).order_by('-grado','apellidos')
     cantidad = Alumno.objects.filter(dojo=dojo).count()
     peticion = Peticion.objects.filter(finalizada=False, dojo=dojo).count()
+    peticionpte = Peticion.objects.filter(finalizada=False, dojo=dojo)
     for i in range(1, 9):
         i = Alumno.objects.filter(dojo=dojo,grado=i).count()
         danes.append(i)
@@ -134,7 +135,8 @@ def DojoDetail(request, dojo):
         'alumno':alumno, 
         'cantidad':cantidad, 
         'danes':danes, 
-        'peticion':peticion
+        'peticion':peticion,
+        'peticionpte':peticionpte
         })
 
 

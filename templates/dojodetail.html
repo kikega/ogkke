@@ -23,10 +23,10 @@
       <h2>{{ dojo.nombre }}</h2>
     </div>
     <div class="col-auto">
-      <button class="btn btn-primary" data-toggle="modal" data-target="#peticionModal">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#peticionModal">
         Petición Nueva
       </button>
-      <button type="button" class="btn btn-success">
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#peticionpteModal">
         Peticiones pendientes <span class="badge badge-light">{{ peticion }}</span>
       </button>
     </div>
@@ -159,6 +159,31 @@
             <button type="submit" class="btn btn-primary">Enviar</button>
           </div>
         </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="peticionpteModal" tabindex="-1" role="dialog" aria-labelledby="peticionpteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="peticionpteModalLabel">Peticiones pendientes</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        {% for pte in peticionpte %}
+          <h5>{{ pte.titulo }}</h5>
+          <p>{{ pte.descripcion }}</p>
+        {% endfor %}
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
       </div>
       
     </div>
