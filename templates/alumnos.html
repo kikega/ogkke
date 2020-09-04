@@ -63,7 +63,10 @@
 
 <script>
   $(document).ready(function() {
-    $('#tbalumno').DataTable();
+    $('#tbalumno').DataTable( {
+      pagging: true,
+      ordering: true
+    });
   } );    
 </script>
 
