@@ -154,7 +154,7 @@ def AlumnosDan(request):
 
 @login_required
 def cursillos_view(request):
-    cursillo = Cursillo.objects.all()
+    cursillo = Cursillo.objects.all().order_by('-fecha')
     return render(request, 'cursillos.html', {'cursillo':cursillo})
 
 
