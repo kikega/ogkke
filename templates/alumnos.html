@@ -61,13 +61,15 @@
   </div>
 </div>
 
-<script>
-    $('#tbalumno').DataTable( {
-      "pagging": true,
-      "ordering": true
-    }); 
-</script>
 
 {% endblock container %}
     
+  <script>
+    $(document).ready(function() {
+      $('#tbalumno').DataTable( {
+        "pagging": true,
+        "ordering": true
+      });
+    } );    
+  </script>
     
