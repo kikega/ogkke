@@ -33,41 +33,40 @@
 
     <div class="col">
       <div class="row">
-        <table id="tabla_alumnos" class="table table-striped">
-          <tr>
-            <th>Nombre</th>
-            <th>Gimnasio</th>
-            <th>Activo</th>
-          </tr>
-          {% for alm in alumno %}
+        <table id="tbalumno" class="table table-striped">
+          <thead>
             <tr>
-              <td><a href="{{ alm.id }}">{{ alm.apellidos }}, {{ alm.nombre }}</a></td>
-              <td>{{ alm.dojo }}</td>
-              <td>
-                {% if alm.activo %}
-                  <i class="fa fa-fw fa-check-circle text-success"></i>
-                {% endif %}
-                  </td>
-            </tr>		
-          {% endfor %}
-          </table>
+              <th>Nombre</th>
+              <th>Gimnasio</th>
+              <th>Activo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for alm in alumno %}
+              <tr>
+                <td><a href="{{ alm.id }}">{{ alm.apellidos }}, {{ alm.nombre }}</a></td>
+                <td>{{ alm.dojo }}</td>
+                <td>
+                  {% if alm.activo %}
+                    <i class="fa fa-fw fa-check-circle text-success"></i>
+                  {% endif %}
+                    </td>
+              </tr>		
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
     </div>
 
   </div>
 </div>
 
+<script>
+  $(document).ready(function() {
+    $('#tbalumno').DataTable();
+  } );    
+</script>
 
 {% endblock container %}
     
-{% block script_js %}
-
-<script>
-  $(document).ready( function () {
-    $('#tabla_alumnos').DataTable();
-    console.log("Script datatable");
-  });
-</script>
-
-{% endblock script_js %}
     
