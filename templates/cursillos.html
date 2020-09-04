@@ -21,29 +21,33 @@
     <div class="row">
       <div class="col">
         <h1>Gasshukus realizados</h1> 
-          <table class="table table-striped">
-            <tr>
-              <th>Fecha</th>
-              <th>Evento</th>
-              <th>Ciudad</th>
-              <th>País</th>
-              <th>Internacional</th>
-            </tr>
-            {% for curso in cursillo %}
+          <table id="tbcursillos" class="table table-striped">
+            <thead>
               <tr>
-                <td><a href="{{ curso.id }}">{{ curso.fecha }}</a></td>
-                <td>{{ curso.evento }}</td>
-                <td>{{ curso.ciudad }}</td>
-                <td>{{ curso.pais }}</td>
-                
-                {% if curso.internacional %}
-                  <td><i class="fa fa-fw fa-check-circle text-success"></i></td>     
-                {% else %}
-                  <td></td>             
-                {% endif %}
+                <th>Fecha</th>
+                <th>Evento</th>
+                <th>Ciudad</th>
+                <th>País</th>
+                <th>Internacional</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for curso in cursillo %}
+                <tr>
+                  <td><a href="{{ curso.id }}">{{ curso.fecha }}</a></td>
+                  <td>{{ curso.evento }}</td>
+                  <td>{{ curso.ciudad }}</td>
+                  <td>{{ curso.pais }}</td>
                   
-              </tr>		
-            {% endfor %}
+                  {% if curso.internacional %}
+                    <td><i class="fa fa-fw fa-check-circle text-success"></i></td>     
+                  {% else %}
+                    <td></td>             
+                  {% endif %}
+                    
+                </tr>		
+              {% endfor %}
+            </tbody>
           </table>
 
       </div>
@@ -53,3 +57,16 @@
 </div>
 
 {% endblock container %}
+
+{% block script_js %}
+
+<script>
+      $(document).ready(function() {
+        $('#tbcursillos').DataTable( {
+          "pagging": true,
+          "ordering": true
+        });
+      } );    
+  </script>
+
+{% endblock script_js %}

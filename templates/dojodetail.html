@@ -95,23 +95,27 @@
 
   <div class="row">
     <div class="col">
-      <table class="table table-striped">
-        <tr>
-          <th>Nombre</th>
-          <th>Grado</th>
-          <th>Activo</th>
-        </tr>
-        {% for alm in alumno %}
+      <table id="tbalumnos" class="table table-striped">
+        <thead>
           <tr>
-            <td>{{ alm.nombre }}, {{ alm.apellidos }}</td>
-            <td>{{ alm.grado }}º DAN</td>
-            <td>
-              {% if alm.activo %}
-                <i class="fa fa-fw fa-check-circle text-success"></i>
-              {% endif %}
-            </td>
-          </tr>		
-        {% endfor %}
+            <th>Nombre</th>
+            <th>Grado</th>
+            <th>Activo</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for alm in alumno %}
+            <tr>
+              <td>{{ alm.nombre }}, {{ alm.apellidos }}</td>
+              <td>{{ alm.grado }}º DAN</td>
+              <td>
+                {% if alm.activo %}
+                  <i class="fa fa-fw fa-check-circle text-success"></i>
+                {% endif %}
+              </td>
+            </tr>		
+          {% endfor %}
+        </tbody>
         </table>
         <!-- <p>Total {{ cantidad }} alumnos</p>   -->
     </div>
@@ -191,3 +195,16 @@
 </div>
 
 {% endblock container %}
+
+{% block script_js %}
+
+<script>
+      $(document).ready(function() {
+        $('#tbalumnos').DataTable( {
+          "pagging": true,
+          "ordering": true
+        });
+      } );    
+  </script>
+
+{% endblock script_js %}
