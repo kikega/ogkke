@@ -64,12 +64,19 @@
 
 {% endblock container %}
     
-  <script>
-    $(document).ready(function() {
-      $('#tbalumno').DataTable( {
-        "pagging": true,
-        "ordering": true
-      });
-    } );    
+
+{% block script_js %}
+
+<script>
+      $(document).ready(function() {
+        $('#tbalumno').DataTable( {
+          "pagging": true,
+          "ordering": true
+        });
+      } );    
   </script>
+
+{% endblock script_js %}
+
+    
     
