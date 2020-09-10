@@ -87,9 +87,6 @@
   </div>
 </div>
 
-
-
-
 {% endblock container %}
 
 
@@ -101,12 +98,12 @@
   var myLineChart = new Chart(ctx, {
     type: 'horizontalBar',
     data: {
-      labels: {{ exm }},
+      labels: {{ exm|safe }},
       datasets: [{
         label: "Dan",
         backgroundColor: "rgba(2,117,216,0.7)",
         borderColor: "rgba(2,117,216,1)",
-        data: {{ anios }},
+        data: {{ anios|safe }},
       }],
     },
     options: {
