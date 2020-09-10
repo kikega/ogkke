@@ -85,7 +85,7 @@ def alumnos_detalle_view(request, grado, id):
         else:
             anios.append(examen[idx+1].evento.fecha.year - examen[idx].evento.fecha.year)
     
-    # grafico = dict(zip(exm, anios))
+    grafico = dict(zip(exm, anios))
     
     # data = serializers.serialize('json', grafico, fields=('x','y'))
 
@@ -93,6 +93,7 @@ def alumnos_detalle_view(request, grado, id):
         'alumno':alumno, 
         'examen':examen, 
         'hoy':hoy, 
+        'grafico': grafico,
         'exm': exm,
         'anios': anios
         })
