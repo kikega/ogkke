@@ -51,9 +51,96 @@
           </table>
       </div>
     </div>
+
+    <!-- <div class="row">
+      <div class="col">
+        <h3>Años en un grado</h3>
+          <table class="table table-striped">
+            <tr>
+              <th>Examen</th>
+              <th>Años</th>
+            </tr>
+            {% for g, y in grafico.items %}
+              <tr>
+                <td>{{ g }}º DAN</td>
+                <td>{{ y }}</td>
+              </tr>		
+            {% endfor %}
+          </table>
+      </div>
+    </div> -->
+
+    <div class="card mb-3">
+      <div class="card-header">
+        <i class="fa fa-area-chart"></i>
+        Número de años en cada grado
+      </div>
+      <div class="card-body">
+        <canvas id="myChartGrados" width="100%" height="30"></canvas>
+      </div>
+      <div class="card-footer small text-muted">
+        Actualizado a {{ hoy }}
+      </div>
+    </div>
   
 
   </div>
 </div>
 
+
+
+
 {% endblock container %}
+
+
+{% block script_js %}
+
+<script>
+  
+  var ctx = document.getElementById("myChartGrados");
+  var myLineChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+      labels: {{ exm }},
+      datasets: [{
+        label: "Dan",
+        backgroundColor: "rgba(2,117,216,0.7)",
+        borderColor: "rgba(2,117,216,1)",
+        data: {{ anios }},
+      }],
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          time: {
+            unit: 'year'
+          },
+          gridLines: {
+            display: true
+          },
+          ticks: {
+            maxTicksLimit: 6
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            min: 0,
+            max: 50,
+            maxTicksLimit: 5
+          },
+          gridLines: {
+            display: true
+          }
+        }],
+      },
+      legend: {
+        display: false
+      }
+    }
+  });
+
+</script>
+
+  
+{% endblock script_js %}
+  

@@ -65,7 +65,7 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 // -- Area Chart Example
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
-  type: 'line',
+  type: 'bar',
   data: {
     labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
     datasets: [{

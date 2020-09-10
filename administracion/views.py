@@ -1,8 +1,10 @@
 import datetime
+import json
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.core import serializers
 from django.db.models import Q
 from django.views.generic import TemplateView, ListView
 from administracion.models import Dojo, Alumno, Examen, Cursillo, Peticion
@@ -69,14 +71,31 @@ def alumnos_view(request,grado=1):
 
 @login_required
 def alumnos_detalle_view(request, grado, id):
-    """Función que lista los detalles de un alumno y los eventos en los cuales se ha examinado"""
+    """Función que lista los detalles de un alumno, los eventos en los cuales se ha examinado
+    Y los años que ha estado en cada grado"""
     alumno = Alumno.objects.get(id=id)
     examen = Examen.objects.filter(alumno=id)
     hoy = datetime.date.today()
-    for year in examen:
-        print("Año {} - Grado {}".format(year.evento.fecha.year, year.grado))
-        print(hoy.year)
-    return render(request, 'alumnodetalle.html', {'alumno':alumno, 'examen':examen})
+    anios = list()
+    exm = list()
+    for idx in range(0, len(examen)):
+        exm.append(examen[idx].grado)
+        if idx == len(examen) - 1:
+            anios.append(hoy.year - examen[idx].evento.fecha.year)
+        else:
+            anios.append(examen[idx+1].evento.fecha.year - examen[idx].evento.fecha.year)
+    
+    # grafico = dict(zip(exm, anios))
+    
+    # data = serializers.serialize('json', grafico, fields=('x','y'))
+
+    return render(request, 'alumnodetalle.html', {
+        'alumno':alumno, 
+        'examen':examen, 
+        'hoy':hoy, 
+        'exm': exm,
+        'anios': anios
+        })
 
 
 @login_required
