@@ -79,7 +79,7 @@ def alumnos_detalle_view(request, grado, id):
     anios = list()
     exm = list()
     for idx in range(0, len(examen)):
-        exm.append(str(examen[idx].grado) + " DAN")
+        exm.append(str(examen[idx].grado) + "º DAN")
         if idx == len(examen) - 1:
             anios.append(hoy.year - examen[idx].evento.fecha.year)
         else:

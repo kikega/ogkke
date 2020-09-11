@@ -62,7 +62,7 @@
             </tr>
             {% for g, y in grafico.items %}
               <tr>
-                <td>{{ g }}º DAN</td>
+                <td>{{ g }}</td>
                 <td>{{ y }}</td>
               </tr>		
             {% endfor %}
@@ -98,12 +98,11 @@
   var myLineChart = new Chart(ctx, {
     type: 'horizontalBar',
     data: {
-      labels: {{ exm|safe }},
+      // labels: {{ exm|safe }},
       datasets: [{
         label: "Años",
-        backgroundColor: "rgba(2,117,216,0.2)",
+        backgroundColor: "rgba(2,117,216,0.5)",
         borderColor: "rgba(2,117,216,1)",
-        hoverBorderColor: "rgba(2,117,216,1)",
         data: {{ anios|safe }},
       }],
     },
