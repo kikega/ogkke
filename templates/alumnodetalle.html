@@ -70,6 +70,17 @@
       </div>
     </div>
 
+    
+    
+    <!-- </div>
+    </div> -->
+    
+    {% endblock container %}
+    
+    
+    {% block script_js %}
+    
+    
     <div class="card mb-3">
       <div class="card-header">
         <i class="fa fa-area-chart"></i>
@@ -82,48 +93,42 @@
         Actualizado a {{ hoy }}
       </div>
     </div>
-  
-
-  </div>
-</div>
-
-{% endblock container %}
-
-
-{% block script_js %}
-
-<script>
-  
-  var ctx = document.getElementById("myChartGrados");
-  var myLineChart = new Chart(ctx, {
-    type: 'horizontalBar',
-    data: {
-      labels: {{ exm|safe }},
-      datasets: [{
-        label: "Años",
-        backgroundColor: "rgba(2,117,216,0.5)",
-        // borderColor: "rgba(2,117,216,1)",
-        data: {{ anios|safe }},
-      }],
-    },
-    options: {
-      scales: {
-        xAxes: [{
-          time: { unit: 'year' },
-          gridLines: { display: true },
-          ticks: { maxTicksLimit: 6 }
-        }],
-        yAxes: [{
-          ticks: { min: 0, max: 50, maxTicksLimit: 5 },
-          gridLines: { display: true }
-        }],
-      },
-      legend: { display: false }
-    }
-  });
+    
+    <script>
+      
+      var ctx = document.getElementById("myChartGrados");
+      var myLineChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+          labels: {{ exm|safe }},
+          datasets: [{
+            label: "Años",
+            backgroundColor: "rgba(2,117,216,0.5)",
+            // borderColor: "rgba(2,117,216,1)",
+            data: {{ anios|safe }},
+          }],
+        },
+        options: {
+          scales: {
+            xAxes: [{
+              time: { unit: 'year' },
+              gridLines: { display: true },
+              ticks: { maxTicksLimit: 6 }
+            }],
+            yAxes: [{
+              ticks: { min: 0, max: 50, maxTicksLimit: 5 },
+              gridLines: { display: true }
+            }],
+          },
+          // legend: { display: false }
+        }
+      });
 
 </script>
 
+
+  </div>
+</div>
   
 {% endblock script_js %}
   
