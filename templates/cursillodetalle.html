@@ -26,11 +26,13 @@
     <table class="table table-striped">
       <tr>
         <th>Nombre</th>
+        <th>Dojo</th>
         <th>Grado</th>
       </tr>
       {% for alm in examenes %}
         <tr>
           <td>{{ alm.alumno }}</td>
+          <td>{{ almalumno.dojo }}</td>
           <td>{{ alm.grado }}º DAN</td>
         </tr>		
       {% endfor %}
