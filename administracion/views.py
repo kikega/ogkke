@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
-from django.db.models import Q
+# from django.db.models import Q
 from django.views.generic import TemplateView, ListView
 from administracion.models import Dojo, Alumno, Examen, Cursillo, Peticion
 
