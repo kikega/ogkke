@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col">
         <h3>Años en un grado</h3>
           <table class="table table-striped">
@@ -68,8 +68,31 @@
             {% endfor %}
           </table>
       </div>
-    </div>
+    </div> -->
 
+    <div class="card mb-3">
+      <div class="card-header">
+        <!-- <i class="fa fa-area-chart"></i> -->
+        Número de años en cada grado
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <tr>
+            <th>Examen</th>
+            <th>Años</th>
+          </tr>
+          {% for g, y in grafico.items %}
+            <tr>
+              <td>{{ g }}</td>
+              <td>{{ y }}</td>
+            </tr>		
+          {% endfor %}
+        </table>
+      </div>
+      <div class="card-footer small text-muted">
+        Actualizado a {{ hoy }}
+      </div>
+    </div>
     
     
     </div>
