@@ -24,18 +24,22 @@
   </div>
   <hr>
     <table id="tbcursodetalle" class="table table-striped">
-      <tr>
-        <th>Nombre</th>
-        <th>Dojo</th>
-        <th>Grado</th>
-      </tr>
-      {% for alm in examenes %}
+      <thead>
         <tr>
-          <td>{{ alm.alumno }}</td>
-          <td>{{ alm.alumno.dojo }}</td>
-          <td>{{ alm.grado }}º DAN</td>
-        </tr>		
-      {% endfor %}
+          <th>Nombre</th>
+          <th>Dojo</th>
+          <th>Grado</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for alm in examenes %}
+          <tr>
+            <td>{{ alm.alumno }}</td>
+            <td>{{ alm.alumno.dojo }}</td>
+            <td>{{ alm.grado }}º DAN</td>
+          </tr>		
+        {% endfor %}
+      </tbody>
       </table>
       <!-- <p>Total {{ cantidad }} alumnos</p> -->
 
