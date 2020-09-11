@@ -98,11 +98,11 @@
   var myLineChart = new Chart(ctx, {
     type: 'horizontalBar',
     data: {
-      // labels: {{ exm|safe }},
+      labels: {{ exm|safe }},
       datasets: [{
         label: "Años",
         backgroundColor: "rgba(2,117,216,0.5)",
-        borderColor: "rgba(2,117,216,1)",
+        // borderColor: "rgba(2,117,216,1)",
         data: {{ anios|safe }},
       }],
     },
