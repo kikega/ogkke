@@ -96,7 +96,7 @@
   
   var ctx = document.getElementById("myChartGrados");
   var myLineChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'horizontalBar',
     data: {
       labels: {{ exm|safe }},
       datasets: [{
@@ -136,6 +136,7 @@
     }
   });
 
+  console.log(anios)
 </script>
 
   
