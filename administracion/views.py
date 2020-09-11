@@ -181,5 +181,5 @@ def cursillos_view(request):
 @login_required
 def cursillo_detalle(request, cursillo):
     curso = Cursillo.objects.get(id=cursillo)
-    examenes = Examen.objects.filter(evento=cursillo)
+    examenes = Examen.objects.filter(evento=cursillo).order_by('dojo', 'apellidos')
     return render(request, 'cursillodetalle.html', {'curso':curso, 'examenes':examenes})
