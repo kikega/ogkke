@@ -96,7 +96,7 @@
   
   var ctx = document.getElementById("myChartGrados");
   var myLineChart = new Chart(ctx, {
-    type: 'horizontalBar',
+    type: 'line',
     data: {
       labels: {{ exm|safe }},
       datasets: [{
