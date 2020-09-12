@@ -24,7 +24,6 @@
 
     <div class="row">
       <div class="col">
-        <!-- <h1 class="text-dark text-center">Okinawa Goju Ryu Karate-Do Kyokai España</h1> -->
         <h2>Datos generales</h2>
       </div>
     </div>
@@ -32,17 +31,6 @@
     <!-- Cajas con los datos totales -->
     <div class="row">
       <div class="col-xl-3 col-sm-6 mb-3">
-        <!-- <div class="card text-white bg-primary o-hidden">
-          <div class="card-body">
-            <div class="card-body-icon">
-              <i class="fa fa-fw fa-male"></i>
-            </div>
-            <div class="mr-5">
-                Cinturones Negros {{ cn }}
-            </div>
-          </div>
-          
-        </div> -->
         <div class="card mb-3">
           <img src="{% static 'img/cn.jpg' %}" class="card-img-top" alt="cinturon negro">
           <div class="card-body text-center">
@@ -52,16 +40,6 @@
       </div>
   
       <div class="col-xl-3 col-sm-6 mb-3">
-          <!-- <div class="card text-white bg-success o-hidden">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-thumbs-up"></i>
-              </div>
-              <div class="mr-5">
-                Gasshukus {{ cursos }}
-              </div>
-            </div>
-          </div> -->
           <div class="card mb-3">
             <img src="{% static 'img/gassukus.jpg' %}" class="card-img-top" alt="cinturon negro">
             <div class="card-body text-center">
@@ -71,16 +49,6 @@
         </div>
 
         <div class="col-xl-3 col-sm-6 mb-3">
-          <!-- <div class="card text-white bg-warning o-hidden">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-cogs"></i>
-              </div>
-              <div class="mr-5">
-                Dojos asociados {{ dojos }}
-              </div>
-            </div>
-          </div> -->
           <div class="card mb-3">
             <img src="{% static 'img/dojos.jpg' %}" class="card-img-top" alt="cinturon negro">
             <div class="card-body text-center">
@@ -90,16 +58,6 @@
         </div>
       
           <div class="col-xl-3 col-sm-6 mb-3">
-            <!-- <div class="card text-white bg-danger o-hidden">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fa fa-fw fa-wrench"></i>
-                </div>
-                <div class="mr-5">
-                  Peticiones Pendientes {{ peticiones }}
-                </div>
-              </div>
-            </div> -->
             <div class="card mb-3">
               <img src="{% static 'img/peticiones.jpg' %}" class="card-img-top" alt="cinturon negro">
               <div class="card-body text-center">
@@ -111,11 +69,33 @@
       
     <!-- Fin cajas con los datos totales -->
 
-    <div class="row">
+    <div class="card mb-3">
+      <div class="card-header">
+        <!-- <i class="fa fa-area-chart"></i> -->
+        <h3>Cinturones negros por grado</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <tr>             
+            {% for d in danes  %}
+              <th>{{ forloop.counter }}º DAN</th>
+            {% endfor %}               
+          </tr>
+              <tr>             
+                {% for d in danes  %}
+                  <th>{{ d }}</th>
+                {% endfor %}               
+              </tr>		
+        </table>
+      </div>
+      <div class="card-footer small text-muted">
+        <!-- Actualizado a {{ hoy }} -->
+      </div>
+    </div>
+
+
+    <!-- <div class="row">
       <div class="col">
-        <!-- <h1 class="text-primary">Okinawa Goju Ryu Karate-Do Kyokai España</h1>  -->
-        <!-- <h2>Datos generales</h2> -->
-        <!-- <span class="badge badge-primary">{{ cn }}</span> -->
         <h3>Cinturones Negros por grado</h3>         
         <table class="table table-striped">
           <tr>             
@@ -130,11 +110,28 @@
               </tr>		
         </table>
       </div>
+    </div> -->
+
+    <div class="card mb-3">
+      <div class="card-header">
+        <!-- <i class="fa fa-area-chart"></i> -->
+        <h3>Gasshukus</h3>
+      </div>
+      <div class="card-body">
+        <ul class="list-group">
+          <li class="list-group-item">Total Nacional: <span class="badge badge-success">{{ nacional }}</span></li>
+          <li class="list-group-item">Total Extranjero <span class="badge badge-warning">{{ extranjero }}</span></li>
+          <li class="list-group-item">Total Internacionales: <span class="badge badge-primary">{{ int }}</span></li>
+        </ul>
+      </div>
+      <div class="card-footer small text-muted">
+        <!-- Actualizado a {{ hoy }} -->
+      </div>
     </div>
 
-    <div class="row">
+
+    <!-- <div class="row">
       <div class="col">
-        <!-- <span class="badge badge-primary">{{ cursos }}</span> -->
         <h3>Gasshukus</h3>
         <ul class="list-group">
           <li class="list-group-item">Total Nacional: <span class="badge badge-success">{{ nacional }}</span></li>
@@ -142,7 +139,7 @@
           <li class="list-group-item">Total Internacionales: <span class="badge badge-primary">{{ int }}</span></li>
         </ul>
       </div>
-    </div>
+    </div> -->
 
   </div>
 </div>
