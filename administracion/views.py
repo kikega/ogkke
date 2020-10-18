@@ -21,6 +21,7 @@ def index(request):
     extranjero = Cursillo.objects.exclude(pais='España').count()
     peticiones = Peticion.objects.filter(finalizada=False).count()
     dojos = Dojo.objects.all().count()
+    hoy = datetime.date.today()
     danes = list()
     for i in range(1, 9):
         i = Alumno.objects.filter(grado=i).count()
@@ -34,6 +35,7 @@ def index(request):
         'extranjero':extranjero,
         'peticiones':peticiones,
         'dojos':dojos,
+        'hoy':hoy,
         })
 
 
@@ -175,11 +177,20 @@ def AlumnosDan(request):
 @login_required
 def cursillos_view(request):
     cursillo = Cursillo.objects.all().order_by('-fecha')
-    return render(request, 'cursillos.html', {'cursillo':cursillo})
+    hoy = datetime.date.today()
+    return render(request, 'cursillos.html', {'cursillo':cursillo, 'hoy':hoy})
 
 
 @login_required
 def cursillo_detalle(request, cursillo):
     curso = Cursillo.objects.get(id=cursillo)
     examenes = Examen.objects.filter(evento=cursillo).order_by('alumno')
-    return render(request, 'cursillodetalle.html', {'curso':curso, 'examenes':examenes})
+    hoy = datetime.date.today()
+    return render(request, 'cursillodetalle.html', {'curso':curso, 'examenes':examenes, 'hoy':hoy})
+
+
+@login_required
+def cursillo_inscripcion(request):
+    pass
+    # curso = Cursillo.objects.get(id=cursillo)
+    return render(request, 'inscripcion.html')

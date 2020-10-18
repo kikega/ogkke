@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block container %}
+    
+{% include 'navbar.html' %}
+
+{% include 'cabecera.html' %}
+
+<div class="content-wrapper"> 
+  <div class="container-fluid"> 
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
+      <li class="breadcrumb-item active"><a href="{% url 'cursillos' %}">Gasshuku</a></li>
+      <li class="breadcrumb-item active"><a href="{% url 'inscripcion' %}">Inscripcion</a></li>
+    </ol> 
+    <div class="row">
+      <div class="col">
+        <h1 class="text-primary">Inscripción a Gasshuku</h1> 
+      </div>
+    </div>
+
+    <!-- <div class="row">
+      <div class="col-auto mr-auto"> 
+        <h2>{{ curso.evento }}</h2>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">{{ curso.pais }}</h4>
+            <p class="card-text">{{ curso.ciudad }}</p>
+            <p class="card-text">{{ curso.fecha }}</p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <hr>
+    <div class="row">
+      <div class="col">
+      
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock container %}
+

@@ -17,13 +17,13 @@
         </ol> 
       </div>
     </div>
-
+    
     <div class="row">
       <div class="col">
         <h1>Gasshukus realizados</h1> 
-          <table id="tbcursillos" class="table table-striped">
-            <thead>
-              <tr>
+        <table id="tbcursillos" class="table table-striped">
+          <thead>
+            <tr>
                 <th>Fecha</th>
                 <th>Evento</th>
                 <th>Ciudad</th>
@@ -33,23 +33,27 @@
             </thead>
             <tbody>
               {% for curso in cursillo %}
+              
+              {% if curso.fecha > hoy %}
+                <tr class="table-info">
+              {% else %}
                 <tr>
+              {% endif %} 
                   <td><a href="{{ curso.id }}">{{ curso.fecha }}</a></td>
                   <td>{{ curso.evento }}</td>
                   <td>{{ curso.ciudad }}</td>
                   <td>{{ curso.pais }}</td>
                   
                   {% if curso.internacional %}
-                    <td><i class="fa fa-fw fa-check-circle text-success"></i></td>     
+                  <td><i class="fa fa-fw fa-check-circle text-success"></i></td>     
                   {% else %}
-                    <td></td>             
-                  {% endif %}
-                    
+                  <td></td>             
+                  {% endif %} 
                 </tr>		
-              {% endfor %}
-            </tbody>
-          </table>
-
+                {% endfor %}
+              </tbody>
+            </table>
+           
       </div>
     </div>
 

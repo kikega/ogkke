@@ -13,36 +13,99 @@
       <li class="breadcrumb-item active"><a href="{% url 'cursillos' %}">Gasshuku</a>
       </li>
     </ol> 
-  <h1 class="text-primary">Gasshuku</h1> 
-  <h2>{{ curso.evento }}</h2>
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title">{{ curso.pais }}</h4>
-      <p class="card-text">{{ curso.ciudad }}</p>
-      <p class="card-text">{{ curso.fecha }}</p>
+    <div class="row">
+      <div class="col">
+        <h1 class="text-primary">Gasshuku</h1> 
+      </div>
     </div>
-  </div>
-  <hr>
-    <table id="tbcursodetalle" class="table table-striped">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Dojo</th>
-          <th>Grado</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for alm in examenes %}
-          <tr>
-            <td>{{ alm.alumno }}</td>
-            <td>{{ alm.alumno.dojo }}</td>
-            <td>{{ alm.grado }}º DAN</td>
-          </tr>		
-        {% endfor %}
-      </tbody>
-      </table>
-      <!-- <p>Total {{ cantidad }} alumnos</p> -->
 
+    <div class="row">
+      <div class="col-auto mr-auto"> 
+        <h2>{{ curso.evento }}</h2>
+      </div>
+      {% if curso.fecha > hoy %}
+      <div class="col-auto">
+        <a href="{% url 'inscripcion' %}" class="btn btn-primary active" role="button" aria-pressed="true">Inscripción</a>
+      </div>
+      {% endif %}
+    </div>
+  
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">{{ curso.pais }}</h4>
+            <p class="card-text">{{ curso.ciudad }}</p>
+            <p class="card-text">{{ curso.fecha }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <table id="tbcursodetalle" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Dojo</th>
+              <th>Grado</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for alm in examenes %}
+              <tr>
+                <td>{{ alm.alumno }}</td>
+                <td>{{ alm.alumno.dojo }}</td>
+                <td>{{ alm.grado }}º DAN</td>
+              </tr>		
+            {% endfor %}
+          </tbody>
+          </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal fade" id="peticionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Inscripción a Gasshuku</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Datos de la petición</h4>
+        <form action="{% url 'inscripcion' %}" method="post" role="form">
+          {% csrf_token %}
+          
+          <div class="form-group">
+            <select name="tipo">
+              <option value="a">Añadir</option>
+              <option value="m">Modificar</option>
+              <option value="e">Eliminar</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Titulo</label>
+            <input type="text" class="form-control" placeholder="Titulo..." 
+            name="titulo">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Descripción</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="descripcion"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+        </form>
+      </div>
+      
+    </div>
   </div>
 </div>
 
