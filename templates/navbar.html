@@ -82,13 +82,15 @@
               </a>
             </li>
 
+            
+            {% if user.is_staff %}                     
             <li class="nav-item {%  if request.resolver_match.url_name == "inicio" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
               <a class="nav-link" href="{% url 'peticion' %}">
                 <i class="fa fa-fw fa-meetup"></i>
-                <span class="nav-link-text">Peticiones</span>
+                <span class="nav-link-text">Incidencias</span>
               </a>
-            </li>
-          
+            </li>           
+            {% endif %}
             
 
           </ul>

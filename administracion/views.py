@@ -23,7 +23,7 @@ def index(request):
     dojos = Dojo.objects.all().count()
     hoy = datetime.date.today()
     danes = list()
-    for i in range(1, 9):
+    for i in range(1, 10):
         i = Alumno.objects.filter(grado=i).count()
         danes.append(i)
     return render(request, 'index.html', {
