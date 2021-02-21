@@ -4,12 +4,14 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.core import serializers
 # from django.db.models import Q
 from django.views.generic import TemplateView, ListView
 from administracion.models import Dojo, Alumno, Examen, Cursillo, Peticion
 
 # Create your views here.
+
 
 @login_required
 def index(request):
@@ -27,16 +29,16 @@ def index(request):
         i = Alumno.objects.filter(grado=i).count()
         danes.append(i)
     return render(request, 'index.html', {
-        'cn':cn, 
-        'danes':danes, 
-        'cursos':cursos, 
-        'nacional':nacional, 
-        'int':int,
-        'extranjero':extranjero,
-        'peticiones':peticiones,
-        'dojos':dojos,
-        'hoy':hoy,
-        })
+        'cn': cn,
+        'danes': danes,
+        'cursos': cursos,
+        'nacional': nacional,
+        'int': int,
+        'extranjero': extranjero,
+        'peticiones': peticiones,
+        'dojos': dojos,
+        'hoy': hoy,
+    })
 
 
 def login_view(request):
@@ -50,9 +52,23 @@ def login_view(request):
             login(request, user)
             return redirect('index')
         else:
-            return render(request, 'login.html', {'error':'Usuario y/o password incorrecto'})
+            return render(request, 'login.html', {'error': 'Usuario y/o password incorrecto'})
 
     return render(request, 'login.html')
+
+
+@login_required
+def change_password(request):
+    """Función para cambiar la contraseña a iun usuario que está logado"""
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = User.objects.get(username=username)
+        user.set_password(password)
+        user.save()
+        print(username, password)
+
+    return redirect('login')
 
 
 @login_required
@@ -63,11 +79,11 @@ def logout_view(request):
 
 
 @login_required
-def alumnos_view(request,grado=1):
+def alumnos_view(request, grado=1):
     """Listado de los alumnos organizados por el grado"""
     alumno = Alumno.objects.filter(grado=grado).order_by('dojo', 'apellidos')
     cantidad = Alumno.objects.filter(grado=grado).count()
-    context = {'grado':grado, 'alumno':alumno, 'cantidad':cantidad}
+    context = {'grado': grado, 'alumno': alumno, 'cantidad': cantidad}
     return render(request, 'alumnos.html', context)
 
 
@@ -85,20 +101,21 @@ def alumnos_detalle_view(request, grado, id):
         if idx == len(examen) - 1:
             anios.append(hoy.year - examen[idx].evento.fecha.year)
         else:
-            anios.append(examen[idx+1].evento.fecha.year - examen[idx].evento.fecha.year)
-    
+            anios.append(examen[idx+1].evento.fecha.year -
+                         examen[idx].evento.fecha.year)
+
     grafico = dict(zip(exm, anios))
-    
+
     # data = serializers.serialize('json', grafico, fields=('x','y'))
 
     return render(request, 'alumnodetalle.html', {
-        'alumno':alumno, 
-        'examen':examen, 
-        'hoy':hoy, 
+        'alumno': alumno,
+        'examen': examen,
+        'hoy': hoy,
         'grafico': grafico,
         'exm': exm,
         'anios': anios
-        })
+    })
 
 
 @login_required
@@ -109,10 +126,12 @@ def buscar_view(request):
         if not request.POST.get('apellido', ""):
             error.append('Debes introducir el apellido de una persona')
         apellido = request.POST['apellido']
-        alumno = Alumno.objects.filter(apellidos__icontains=request.POST['apellido'])
-        cantidad = Alumno.objects.filter(apellidos__icontains=request.POST['apellido']).count()
+        alumno = Alumno.objects.filter(
+            apellidos__icontains=request.POST['apellido'])
+        cantidad = Alumno.objects.filter(
+            apellidos__icontains=request.POST['apellido']).count()
 
-    return render(request, 'busqueda.html', {'alumno':alumno, 'cantidad':cantidad, 'error':error})
+    return render(request, 'busqueda.html', {'alumno': alumno, 'cantidad': cantidad, 'error': error})
 
 
 @login_required
@@ -131,7 +150,7 @@ def peticion_view(request):
     peticion = Peticion.objects.filter(finalizada=False)
     cantidad = Peticion.objects.filter(finalizada=False).count()
 
-    return render(request, 'peticion.html', {'peticion':peticion, 'cantidad':cantidad})
+    return render(request, 'peticion.html', {'peticion': peticion, 'cantidad': cantidad})
 
 
 class DojosView(LoginRequiredMixin, ListView):
@@ -145,21 +164,21 @@ class DojosView(LoginRequiredMixin, ListView):
 def DojoDetail(request, dojo):
     danes = list()
     gym = Dojo.objects.get(id=dojo)
-    alumno = Alumno.objects.filter(dojo=dojo).order_by('-grado','apellidos')
+    alumno = Alumno.objects.filter(dojo=dojo).order_by('-grado', 'apellidos')
     cantidad = Alumno.objects.filter(dojo=dojo).count()
     peticion = Peticion.objects.filter(finalizada=False, dojo=dojo).count()
     peticionpte = Peticion.objects.filter(finalizada=False, dojo=dojo)
     for i in range(1, 9):
-        i = Alumno.objects.filter(dojo=dojo,grado=i).count()
+        i = Alumno.objects.filter(dojo=dojo, grado=i).count()
         danes.append(i)
     return render(request, 'dojodetail.html', {
-        'dojo':gym, 
-        'alumno':alumno, 
-        'cantidad':cantidad, 
-        'danes':danes, 
-        'peticion':peticion,
-        'peticionpte':peticionpte
-        })
+        'dojo': gym,
+        'alumno': alumno,
+        'cantidad': cantidad,
+        'danes': danes,
+        'peticion': peticion,
+        'peticionpte': peticionpte
+    })
 
 
 class AlumnosView(LoginRequiredMixin, ListView):
@@ -178,7 +197,7 @@ def AlumnosDan(request):
 def cursillos_view(request):
     cursillo = Cursillo.objects.all().order_by('-fecha')
     hoy = datetime.date.today()
-    return render(request, 'cursillos.html', {'cursillo':cursillo, 'hoy':hoy})
+    return render(request, 'cursillos.html', {'cursillo': cursillo, 'hoy': hoy})
 
 
 @login_required
@@ -186,7 +205,7 @@ def cursillo_detalle(request, cursillo):
     curso = Cursillo.objects.get(id=cursillo)
     examenes = Examen.objects.filter(evento=cursillo).order_by('alumno')
     hoy = datetime.date.today()
-    return render(request, 'cursillodetalle.html', {'curso':curso, 'examenes':examenes, 'hoy':hoy})
+    return render(request, 'cursillodetalle.html', {'curso': curso, 'examenes': examenes, 'hoy': hoy})
 
 
 @login_required

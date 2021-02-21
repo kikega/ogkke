@@ -120,7 +120,7 @@
             {% endif %}
 
             <li class="nav-item">
-             <!-- <a class="nav-link" data-toggle="modal" data-target="#exampleModal">-->
+                <!-- <a class="nav-link" data-toggle="modal" data-target="#chgpasswdModal"> -->
                 <a class="nav-link">
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 {% if user.is_authenticated %}
@@ -181,6 +181,38 @@
               </form>
             </div>
             
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal cambiar password -->
+      <div class="modal fade" id="chgpasswdModal" tabindex="-1" role="dialog" aria-labelledby="chgpasswdModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="chgpasswdModalLabel">Cambio de contraseña</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Cambiar tu contraseña -->
+              <form action="{% url 'change_password' %}" method="post" role="form">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="user">Nombre de usuario</label>
+                  <input type="text" id="user" class="form-control" placeholder="Nombre de usuario..." name="username">
+                  <label for="passwd">Contraseña</label>
+                  <input type="password" id="passwd" class="form-control" placeholder="Contraseña..." name="password">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+              </form>
+            </div>
+      
           </div>
         </div>
       </div>

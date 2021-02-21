@@ -27,6 +27,7 @@
                 <th>Nombre</th>
                 <th>Población</th>
                 <th>Provincia</th>
+                <th>Correo</th>
               </tr>
             </thead>
             <tbody>
@@ -35,11 +36,11 @@
                   <td><a href="{{ dojo.id }}">{{ dojo.nombre }}</a></td>
                   <td>{{ dojo.Poblacion }}</td>
                   <td>{{ dojo.provincia }}</td>
+                  <td>{{ dojo.correo }}</td>
                 </tr>		
               {% endfor %}
             </tbody>
           </table>
-
       </div>
     </div>
 
@@ -51,12 +52,12 @@
 {% block script_js %}
 
 <script>
-      $(document).ready(function() {
-        $('#tbdojos').DataTable( {
-          "pagging": true,
-          "ordering": true
-        });
-      } );    
-  </script>
+  $(document).ready(function() {
+    $('#tbdojos').DataTable( {
+      "pagging": true,
+      "ordering": true
+    });
+  });    
+</script>
 
 {% endblock script_js %}    
