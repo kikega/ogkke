@@ -213,3 +213,29 @@ def cursillo_inscripcion(request):
     pass
     # curso = Cursillo.objects.get(id=cursillo)
     return render(request, 'inscripcion.html')
+
+
+@login_required
+def correo_view(request):
+    """Envia todos los gimnasios, para enviar el correo"""
+    dojo = Dojo.objects.all()
+
+    return render(request, 'correo.html', {'dojo': dojo})
+
+
+@login_required
+def correo_enviado_view(request):
+    """Anuncia que el correo se ha enviado correctamente y a quien"""
+    instructores = []
+    if request.method == 'POST':
+        instructores = request.POST.getlist('email')
+        for i in instructores:
+            print(i)
+        asunto = request.POST['asunto']
+        contenido = request.POST['contenido']
+
+    return render(request, 'correo-enviado.html', {
+        'instructores': instructores,
+        'asunto': asunto,
+        'contenido': contenido
+    })

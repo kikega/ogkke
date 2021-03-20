@@ -37,4 +37,6 @@ urlpatterns = [
     path('cursillos/inscripcion/', views.cursillo_inscripcion, name='inscripcion'),
     path('peticion/', views.peticion_view, name='peticion'),
     path('admin/', admin.site.urls),
+    path('correo/', views.correo_view, name='correo'),
+    path('correo/correo-enviado', views.correo_enviado_view, name='correo-enviado'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

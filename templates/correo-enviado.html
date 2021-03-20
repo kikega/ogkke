@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+{% include 'navbar.html' %}
+
+{% include 'cabecera.html' %}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
+                    <li class="breadcrumb-item active"><a href="#">Correo</a></li>                  
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h1>Correo Enviado</h1>
+                <p>El correo se ha enviado satisfactoriamente</p>
+                <h3>Asunto</h3>
+                <p>{{ asunto }}</p>
+                <h3>Contenido del correo</h3>
+                <p>{{ contenido }}</p>
+                <h3>Instructores</h3>
+                <ul>
+                    {% for i in instructores  %}
+                        <li>{{ i }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock container %}
