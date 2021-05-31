@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 autopep8==1.5.5
 Django==2.2.23
+=======
+Django==2.2.19
+>>>>>>> 0641606d0c70f339a4cd1fcb24c433ac689185da
 django-tinymce4-lite==1.7.5
 jsmin==2.2.2
 Pillow==8.1.2
