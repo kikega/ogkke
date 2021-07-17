@@ -19,18 +19,30 @@
 
         <div class="row">
             <div class="col">
-                <h1>Correo Enviado</h1>
-                <p>El correo se ha enviado satisfactoriamente</p>
-                <h3>Asunto</h3>
-                <p>{{ asunto }}</p>
-                <h3>Contenido del correo</h3>
-                <p>{{ contenido }}</p>
-                <h3>Instructores</h3>
-                <ul>
-                    {% for i in instructores  %}
-                        <li>{{ i }}</li>
-                    {% endfor %}
-                </ul>
+                
+                {% if error_envio %}
+                    <div class="alert alert-danger">
+                        <h1>Error en el envío de correo</h1>
+                        <p>El error ha sido <strong>{{ error_envio }}</strong></p>
+                        <p>Corrija el error o hable con el administrador e intentelo en otro momento</p>
+                    </div>
+                {% else %}
+                    <div class="alert alert-primary">
+                        <h1>Correo Enviado</h1>
+                        <p>El correo se ha enviado satisfactoriamente</p>
+                        <h3>Asunto</h3>
+                        <p>{{ asunto }}</p>
+                        <h3>Contenido del correo</h3>
+                        <p>{{ contenido }}</p>
+                        <h3>Instructores</h3>
+                        <ul>
+                            {% for i in instructores  %}
+                                <li>{{ i }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                    
             </div>
         </div>
 

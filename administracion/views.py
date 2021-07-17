@@ -9,6 +9,11 @@ from django.core import serializers
 # from django.db.models import Q
 from django.views.generic import TemplateView, ListView
 from administracion.models import Dojo, Alumno, Examen, Cursillo, Peticion
+# Para envío de correo
+from django.core.mail import send_mail
+from django.conf import settings
+from smtplib import SMTPException
+
 
 # Create your views here.
 
@@ -228,14 +233,18 @@ def correo_enviado_view(request):
     """Anuncia que el correo se ha enviado correctamente y a quien"""
     instructores = []
     if request.method == 'POST':
+        email_from = settings.EMAIL_HOST_USER
         instructores = request.POST.getlist('email')
-        for i in instructores:
-            print(i)
         asunto = request.POST['asunto']
         contenido = request.POST['contenido']
-
-    return render(request, 'correo-enviado.html', {
-        'instructores': instructores,
-        'asunto': asunto,
-        'contenido': contenido
-    })
+        try:
+            send_mail(asunto, contenido, email_from,
+                      instructores, fail_silently=False)
+        except SMTPException as error_envio:
+            return render(request, 'correo-enviado.html', {'error_envio': error_envio})
+        else:
+            return render(request, 'correo-enviado.html', {
+                'instructores': instructores,
+                'asunto': asunto,
+                'contenido': contenido
+            })

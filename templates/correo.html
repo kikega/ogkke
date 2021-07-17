@@ -25,12 +25,14 @@
                     {% csrf_token %}
                     <div class class="form-group">
                         <label for="correo">¿A quién enviar un correo?</label>
-                        <select multiple class="form-control" name="email" id="correo" size="8">
+                        <select multiple class="form-control" name="email" id="correo" size="10">
                             {% for d in dojo  %}
                                 <option value="{{ d.correo }}">{{ d.nombre }}</option>
                             {% endfor %}   
                         </select>
-                        <input type="button" class="btn btn-light" id="select_all" name="select_all" value="Seleccionar Todos">
+                        <br>
+                        <input type="button" class="btn btn-success" id="select_all" name="select_all" value="Seleccionar Todos">
+                        <br>
                     </div>
                     <!-- <div class="form-group">
                         <div class="form-check">
@@ -46,7 +48,7 @@
                     </div>
                     <div class="form-group">
                         <label for="contenido">Contenido</label>
-                        <textarea class="form-control" name="contenido" id="contenido" rows="10"></textarea>
+                        <textarea class="form-control" id="tiny" name="contenido" id="contenido" rows="20"></textarea>
                     </div>
                         
                     <div class="modal-footer">
@@ -70,6 +72,13 @@
         $('#correo option').prop('selected', true);
     }); 
 </script>
+
+<script>
+    tinymce.init({
+        selector: 'textarea#tiny'
+    });
+</script>
+
     
 {% endblock script_js %}
     
