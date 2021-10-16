@@ -64,7 +64,8 @@ def login_view(request):
 
 @login_required
 def change_password(request):
-    """Función para cambiar la contraseña a iun usuario que está logado"""
+    """Función para cambiar la contraseña a ls -la
+    un usuario que está logado"""
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -215,9 +216,9 @@ def cursillo_detalle(request, cursillo):
 
 @login_required
 def cursillo_inscripcion(request):
-    pass
+    usuario = request.user
     # curso = Cursillo.objects.get(id=cursillo)
-    return render(request, 'inscripcion.html')
+    return render(request, 'inscripcion.html', {'usuario': usuario})
 
 
 @login_required
