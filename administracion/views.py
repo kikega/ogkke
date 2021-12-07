@@ -64,8 +64,7 @@ def login_view(request):
 
 @login_required
 def change_password(request):
-    """Función para cambiar la contraseña a ls -la
-    un usuario que está logado"""
+    """Función para cambiar la contraseña a un usuario que está logado"""
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -209,9 +208,19 @@ def cursillos_view(request):
 @login_required
 def cursillo_detalle(request, cursillo):
     curso = Cursillo.objects.get(id=cursillo)
+    asisten = curso.alumnos.all().order_by('apellidos')
+    hoy = datetime.date.today()
+    # return render(request, 'cursillodetalle.html', {'curso': curso, 'examenes': examenes, 'hoy': hoy})
+    return render(request, 'cursillodetalle.html', {'curso': curso, 'asisten': asisten, 'hoy': hoy})
+
+
+@login_required
+def cursillo_examen(request, cursillo):
+    curso = Cursillo.objects.get(id=cursillo)
     examenes = Examen.objects.filter(evento=cursillo).order_by('alumno')
     hoy = datetime.date.today()
-    return render(request, 'cursillodetalle.html', {'curso': curso, 'examenes': examenes, 'hoy': hoy})
+    # return render(request, 'cursillodetalle.html', {'curso': curso, 'examenes': examenes, 'hoy': hoy})
+    return render(request, 'cursilloexamen.html', {'curso': curso, 'examenes': examenes, 'hoy': hoy})
 
 
 @login_required

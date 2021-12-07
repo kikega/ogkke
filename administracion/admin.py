@@ -34,6 +34,11 @@ class PeticionAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
+
+admin.site.site_header = 'Panel de control OGKKE'
+admin.site.index_title = 'Administración OGKKE'
+admin.site.site_title = 'Admin OGKKE'
+
 admin.site.register(Dojo, DojoAdmin)
 admin.site.register(Alumno, AlumnoAdmin)
 admin.site.register(Cursillo, CursilloAdmin)

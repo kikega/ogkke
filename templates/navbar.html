@@ -25,9 +25,30 @@
               </a>
             </li> -->
 
+            <!-- <li class="nav-item">
+              <a class="nav-link" data-toggle="modal" data-target="#buscarModal">
+                <i class="fa fa-fw fa-search"></i>
+                Buscar Grado</a>
+            </li> -->
+
+            <li class="nav-item {%  if request.resolver_match.url_name == "inicio" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
+              <a class="nav-link" href="{% url 'cursillos' %}">
+                <i class="fa fa-fw fa-meetup"></i>
+                <span class="nav-link-text">Gasshukus</span>
+              </a>
+            </li>
+            
+            <li class="nav-item {%  if request.resolver_match.url_name == "inicio" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
+              <a class="nav-link" href="{% url 'dojos' %}">
+                <i class="fa fa-fw fa-university"></i>
+                <span class="nav-link-text">Dojos</span>
+              </a>
+            </li>
+            
             <li class="nav-item 
-            " data-toggle="tooltip" data-placement="right" title="Temas">
-              <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseTema" data-parent="#exampleAccordion">
+                        " data-toggle="tooltip" data-placement="right" title="Temas">
+              <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseTema"
+                data-parent="#exampleAccordion">
                 <i class="fa fa-fw fa-file"></i>
                 <span class="nav-link-text">Grados</span>
               </a>
@@ -60,26 +81,6 @@
                   <a href="/alumnos/9">9º DAN</a>
                 </li>
               </ul>
-            </li>
-
-            <!-- <li class="nav-item">
-              <a class="nav-link" data-toggle="modal" data-target="#buscarModal">
-                <i class="fa fa-fw fa-search"></i>
-                Buscar Grado</a>
-            </li> -->
-            
-            <li class="nav-item {%  if request.resolver_match.url_name == "inicio" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
-              <a class="nav-link" href="{% url 'dojos' %}">
-                <i class="fa fa-fw fa-university"></i>
-                <span class="nav-link-text">Dojos</span>
-              </a>
-            </li>
-
-            <li class="nav-item {%  if request.resolver_match.url_name == "inicio" %}active{% endif %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
-              <a class="nav-link" href="{% url 'cursillos' %}">
-                <i class="fa fa-fw fa-meetup"></i>
-                <span class="nav-link-text">Gasshukus</span>
-              </a>
             </li>
 
             {% if user.is_staff %}                     

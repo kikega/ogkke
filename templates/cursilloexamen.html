@@ -46,10 +46,10 @@
       <div class="col">
         <ul class="nav nav-tabs">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Asistentes</a>
+            <a class="nav-link" href="{% url 'cursillo' curso.id %}">Asistentes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'examen' curso.id %}">Examinan</a>
+            <a class="nav-link active" aria-current="page" href="#">Examinan</a>
           </li>
         </ul>
       </div>
@@ -66,9 +66,9 @@
             </tr>
           </thead>
           <tbody>
-            {% for a in asisten %}
+            {% for a in examenes %}
               <tr>
-                <td>{{ a.apellidos }}, {{ a.nombre }}</td>
+                <td>{{ a.alumno }}</td>
                 <td>{{ a.dojo }}</td>
                 <td>{{ a.grado }}º DAN</td>
               </tr>		
