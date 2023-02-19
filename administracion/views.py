@@ -14,8 +14,8 @@ from django.core.mail import send_mail
 from django.conf import settings
 from smtplib import SMTPException
 
-
-# Create your views here.
+# Formularios
+from administracion.forms import ChangePasswordForm
 
 
 @login_required
@@ -66,14 +66,22 @@ def login_view(request):
 def change_password(request):
     """Función para cambiar la contraseña a un usuario que está logado"""
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = User.objects.get(username=username)
-        user.set_password(password)
-        user.save()
-        print(username, password)
+        form = ChangePasswordForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            username = data['username']
+            password = data['password']
+            user = User.objects.get(username=username)
+            user.set_password(password)
+            user.save()
+            print(username, password)
 
-    return redirect('login')
+            return redirect('login')
+
+    else:
+        form = ChangePasswordForm()
+
+    return (request, '')
 
 
 @login_required

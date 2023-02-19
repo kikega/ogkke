@@ -130,8 +130,8 @@
             {% endif %}
 
             <li class="nav-item">
-                <!-- <a class="nav-link" data-toggle="modal" data-target="#chgpasswdModal"> -->
-                <a class="nav-link">
+                <a class="nav-link" data-toggle="modal" data-target="#chgpasswdModal">
+                {% comment %} <a class="nav-link"> {% endcomment %}
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 {% if user.is_authenticated %}
                     {{ user.username|capfirst }}
@@ -212,9 +212,12 @@
                 {% csrf_token %}
                 <div class="form-group">
                   <label for="user">Nombre de usuario</label>
-                  <input type="text" id="user" class="form-control" placeholder="Nombre de usuario..." name="username">
+                  <input type="text" id="user" class="form-control" placeholder="Nombre de usuario..." name="username" value={{ user.username }}>
                   <label for="passwd">Contraseña</label>
                   <input type="password" id="passwd" class="form-control" placeholder="Contraseña..." name="password">
+                  <label for="passwd">Contraseña</label>
+                  <input type="password" id="passwd" class="form-control" placeholder="Repite contraseña..." name="password_confirmation">
+                
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

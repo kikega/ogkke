@@ -9,6 +9,10 @@ class ExamenAdmin(admin.ModelAdmin):
     list_filter = ('evento',)
 
 
+class InstructorAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'apellidos', 'correo', 'telefono', 'grado')
+
+
 class DojoAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'correo', 'nombre_instructor',
                     'apellidos_instructor')
@@ -44,3 +48,4 @@ admin.site.register(Alumno, AlumnoAdmin)
 admin.site.register(Cursillo, CursilloAdmin)
 admin.site.register(Examen, ExamenAdmin)
 admin.site.register(Peticion, PeticionAdmin)
+admin.site.register(Instructor, InstructorAdmin)
