@@ -32,7 +32,7 @@ class Dojo(models.Model):
     nombre_instructor = models.CharField(max_length=50, blank=True, null=True)
     apellidos_instructor = models.CharField(
         max_length=50, blank=True, null=True)
-    grados = models.IntegerField(blank=True, null=True)
+    grado = models.IntegerField(blank=True, null=True)
     RANGO_GRADO = (
         ('h', 'Hanshi'),
         ('r', 'Renshi'),
