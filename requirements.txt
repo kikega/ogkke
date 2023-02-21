@@ -3,7 +3,7 @@ autopep8==1.6.0
 Django==3.2.13
 django-tinymce4-lite==1.8.0
 jsmin==2.2.2
-Pillow==9.1.0
+Pillow==9.3.0
 psycopg2==2.8.4
 pycodestyle==2.8.0
 python-decouple==3.6
