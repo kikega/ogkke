@@ -7,6 +7,7 @@ class Instructor(models.Model):
     """Tabla para el registro de instructores"""
     nombre = models.CharField(max_length=50, blank=True, null=True)
     apellidos = models.CharField(max_length=50, blank=True, null=True)
+    fecha_nacimiento = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
     telefono = models.CharField(max_length=9, blank=True, null=True)
     correo = models.EmailField(max_length=254, blank=True, null=True)
     grado = models.IntegerField(blank=True, null=True)
