@@ -118,7 +118,8 @@ def alumnos_detalle_view(request, grado, id):
                          examen[idx].evento.fecha.year)
 
     grafico = dict(zip(exm, anios))
-
+    edad = hoy.year - alumno.fecha_nacimiento.year
+    print(f'Edad: {edad}')
     # data = serializers.serialize('json', grafico, fields=('x','y'))
 
     return render(request, 'alumnodetalle.html', {
@@ -127,7 +128,8 @@ def alumnos_detalle_view(request, grado, id):
         'hoy': hoy,
         'grafico': grafico,
         'exm': exm,
-        'anios': anios
+        'anios': anios,
+        'edad': edad
     })
 
 
