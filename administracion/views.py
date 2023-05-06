@@ -99,7 +99,6 @@ def alumnos_view(request, grado=1):
     context = {'grado': grado, 'alumno': alumno, 'cantidad': cantidad}
     return render(request, 'alumnos.html', context)
 
-
 @login_required
 def alumnos_detalle_view(request, grado, id):
     """Función que lista los detalles de un alumno, los eventos en los cuales se ha examinado

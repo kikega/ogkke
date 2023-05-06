@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
     'tinymce',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +149,6 @@ EMAIL_PORT = 465
 EMAIL_HOST_USER = config('EMAIL_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 EMAIL_USE_SSL = True
+
+# Django extensions
+#SHELL_PLUS = 'ipython'
