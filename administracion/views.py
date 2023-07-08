@@ -30,7 +30,7 @@ def index(request):
     dojos = Dojo.objects.all().count()
     hoy = datetime.date.today()
     danes = list()
-    for i in range(1, 10):
+    for i in range(1, 11):
         i = Alumno.objects.filter(grado=i).count()
         danes.append(i)
     return render(request, 'index.html', {
@@ -187,7 +187,7 @@ def DojoDetail(request, dojo):
     cantidad = Alumno.objects.filter(dojo=dojo).count()
     peticion = Peticion.objects.filter(finalizada=False, dojo=dojo).count()
     peticionpte = Peticion.objects.filter(finalizada=False, dojo=dojo)
-    for i in range(1, 9):
+    for i in range(1, 10):
         i = Alumno.objects.filter(dojo=dojo, grado=i).count()
         danes.append(i)
     return render(request, 'dojodetail.html', {
