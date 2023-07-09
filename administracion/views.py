@@ -117,12 +117,19 @@ def alumnos_detalle_view(request, grado, id):
                          examen[idx].evento.fecha.year)
 
     grafico = dict(zip(exm, anios))
-    edad = hoy - alumno.fecha_nacimiento
-    print(edad.days)
-    edad = divmod(edad.days, 365)
-    edad_a = edad[0]
-    edad_b = edad[1]
-    print(f'Edad: {edad_a} - {edad_b}')
+    if alumno.fecha_nacimiento == None:
+        # alumno.fecha_nacimiento = hoy
+        # print(edad.days)
+        # edad = divmod(edad.days, 365)
+        edad_a = 0
+        edad_b = 0
+    else:
+        edad = hoy - alumno.fecha_nacimiento
+        print(edad.days)
+        edad = divmod(edad.days, 365)
+        edad_a = edad[0]
+        edad_b = edad[1]
+        print(f'Edad: {edad_a} - {edad_b}')
     # data = serializers.serialize('json', grafico, fields=('x','y'))
 
     return render(request, 'alumnodetalle.html', {
