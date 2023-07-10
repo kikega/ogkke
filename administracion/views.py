@@ -115,12 +115,8 @@ def alumnos_detalle_view(request, grado, id):
         else:
             anios.append(examen[idx+1].evento.fecha.year -
                          examen[idx].evento.fecha.year)
-
     grafico = dict(zip(exm, anios))
     if alumno.fecha_nacimiento == None:
-        # alumno.fecha_nacimiento = hoy
-        # print(edad.days)
-        # edad = divmod(edad.days, 365)
         edad_a = 0
         edad_b = 0
     else:
