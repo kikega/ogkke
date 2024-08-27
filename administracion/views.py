@@ -175,6 +175,11 @@ def peticion_view(request):
     return render(request, 'peticion.html', {'peticion': peticion, 'cantidad': cantidad})
 
 
+@login_required
+def consultas_view(request):
+    """Realizará búsquedas en la BBDD en función de los parámetros quie se le pase"""
+    return render(request, 'consultas.html', {'alumno': alumno})
+
 class DojosView(LoginRequiredMixin, ListView):
     """Listado de gimnasios de la asociación"""
     template_name = 'dojos.html'

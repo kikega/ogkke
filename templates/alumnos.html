@@ -37,6 +37,7 @@
           <thead>
             <tr>
               <th>Nombre</th>
+              <th>Fecha Nacimiento</th>
               <th>Gimnasio</th>
               <th>Activo</th>
             </tr>
@@ -45,6 +46,7 @@
             {% for alm in alumno %}
               <tr>
                 <td><a href="{{ alm.id }}">{{ alm.apellidos }}, {{ alm.nombre }}</a></td>
+                <td>{{ alm.fecha_nacimiento }}</td>
                 <td>{{ alm.dojo }}</td>
                 <td>
                   {% if alm.activo %}
